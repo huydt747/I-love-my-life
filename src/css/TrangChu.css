@@ -1,0 +1,148 @@
+.trangchu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.trangchu h1, .mini-block-2{
+    text-align: center;
+    margin: 20px;
+}
+
+.trangchu .block-1{
+    width: 1200px;
+    border: 2px solid black;
+    padding-top: 10px;
+    display: flex;
+}
+.trangchu .block-1 .mini-block-1{
+    width: 500px;
+    border: 2px solid black;
+}
+.trangchu .block-2 .mini-block{
+    width: 1200px;
+    border: 2px solid black;
+}
+
+.trangchu .mini-block {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột */
+    grid-template-rows: auto auto; /* 2 hàng */
+    gap: 15px;
+    justify-content: center;
+}
+
+.trangchu .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trangchu .product img {
+    width: 100%;
+    max-width: 150px; /* Kích thước ảnh */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.trangchu .product-info {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Block Tin Tức */
+/* Tin tức tổng quan */
+.news-section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.news-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Bố cục lưới chính */
+.news-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+/* Bài viết chính */
+.news-main {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-main img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.news-main h2 {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.news-main a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.news-main p {
+    color: #555;
+}
+
+/* Danh sách bài viết nhỏ */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.news-item {
+    min-width: 600px;
+    display: flex;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+.news-item img {
+
+    border-radius: 5px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.news-item h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.news-item a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.news-item p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+
