@@ -1,12 +1,12 @@
 .intro-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 10px 20px;
   border-radius: 12px;
 }
 
 .intro-container img {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .title-name {

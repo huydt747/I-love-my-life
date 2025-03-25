@@ -13,13 +13,14 @@
 
 .trangchu .block-1{
     width: 1200px;
-    border: 2px solid black;
     padding-top: 10px;
     display: flex;
 }
 .trangchu .block-1 .mini-block-1{
     width: 500px;
-    border: 2px solid black;
+}
+.trangchu .block-1 .mini-block-2{
+    margin: auto;
 }
 .trangchu .block-2 .mini-block{
     width: 1200px;

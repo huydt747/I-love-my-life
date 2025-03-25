@@ -22,10 +22,10 @@ function Header() {
             <nav className={`header ${sticky ? "sticky" : ""}`}>
                 <ul>
                     <li><a href="/">Trang Chủ</a></li>
-                    <li><a href="/">Giới Thiệu</a></li>
-                    <li><a href="/">Tin Tức</a></li>
-                    <li><a href="/">Cửa Hàng</a></li>
-                    <li><a href="/">Liên Hệ</a></li>
+                    <li><a href="/gioi-thieu">Giới Thiệu</a></li>
+                    <li><a href="/tin-tuc">Tin Tức</a></li>
+                    <li><a href="/cua-hang">Cửa Hàng</a></li>
+                    <li><a href="/lien-he">Liên Hệ</a></li>
                 </ul>
             </nav>
         </div>
