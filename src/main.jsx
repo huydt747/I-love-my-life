@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom"
 import './index.css'
 import App from './App.jsx'
 import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import TrangChu from "./pages/TrangChu.jsx";
 import TinTuc from "./pages/TinTuc.jsx";
 import GioiThieu from "./pages/GioiThieu.jsx";

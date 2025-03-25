@@ -85,7 +85,7 @@ function Footer() {
           <div className="subscribe-form">
             <input type="email" placeholder="Nhập email của bạn" />
             <button>
-              <i className="fas fa-paper-plane"></i>
+              <span className="fas fa-paper-plane"></span>
             </button>
           </div>
         </div>

@@ -4,7 +4,7 @@
     --sans: "Josefin Sans", sans-serif;
     border-radius: 5px;
     font-family: "Dancing Script", cursive;
-    color: rgb(121, 125, 127);
+    color: rgb(87, 87, 88);
     letter-spacing: 1px;
     padding: 20px;
     text-align: center;
@@ -32,6 +32,6 @@
 
 .fas {
     font-size: 3rem;
-    color: rgba(100, 58, 122, 0.6);
+    color: rgba(255, 170, 0, 0.767);
     margin-right: 5px;
 }
