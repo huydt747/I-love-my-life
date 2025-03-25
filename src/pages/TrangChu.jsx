@@ -3,6 +3,7 @@ import img1 from "../assets/trangchu/1.jpeg";
 import img2 from "../assets/trangchu/2.jpeg";
 import img3 from "../assets/trangchu/3.webp";
 import Slideshow from "../utils/slideshow";
+import Quote from "../utils/quote";
 
 const images = [img1, img2];
 
@@ -12,10 +13,10 @@ function TrangChu() {
             <Slideshow images={images} interval={3000} />
             <div className="block-1">
                 <div className="mini-block-1">
-                    <h1>Tâm điểm kết nối <br /> Mở lối thành công</h1>
+                    <Quote/>
                 </div>
                 <div className="mini-block-2">
-                    <p>Giới thiệu chung về slogan hoặc công ty</p>
+                    <i>Giới thiệu chung về slogan hoặc công ty</i>
                 </div>
             </div>
             <div className="block-2">

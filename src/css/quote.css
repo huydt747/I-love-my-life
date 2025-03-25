@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Josefin+Sans:600');
+
+.home-quote {
+    --sans: "Josefin Sans", sans-serif;
+    border-radius: 5px;
+    font-family: "Dancing Script", cursive;
+    color: rgb(121, 125, 127);
+    letter-spacing: 1px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.quote {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+.credit {
+    margin-top: 15px;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+}
+
+.credit::before {
+    content: "⸛ ";
+    vertical-align: middle;
+    font-size: 1.4rem;
+}
+
+.fas {
+    font-size: 3rem;
+    color: rgba(100, 58, 122, 0.6);
+    margin-right: 5px;
+}
