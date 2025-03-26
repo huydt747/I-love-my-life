@@ -4,6 +4,7 @@ import img2 from "../assets/trangchu/2.jpeg";
 import img3 from "../assets/trangchu/3.webp";
 import Slideshow from "../utils/slideshow";
 import Quote from "../utils/quote";
+import '../css/TrangChu.css'
 
 const images = [img1, img2];
 const products = [
