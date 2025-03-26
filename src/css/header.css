@@ -60,15 +60,3 @@
     display: block; /* Đảm bảo không bị ảnh hưởng bởi inline spacing */
 }
 
-
-/* Responsive */
-@media (max-width: 768px) {
-    .header ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .header ul li {
-        margin: 10px 0;
-    }
-}
