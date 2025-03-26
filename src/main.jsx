@@ -10,6 +10,7 @@ import TinTuc from "./pages/TinTuc.jsx";
 import GioiThieu from "./pages/GioiThieu.jsx";
 import CuaHang from "./pages/CuaHang.jsx";
 import LienHe from "./pages/LienHe.jsx";
+import ChitietTinTuc from "./pages/ChitietTinTuc.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path:"/lien-he",
         element: <LienHe/>,
+      },
+      {
+        path:"/chi-tiet-tin-tuc",
+        element: <ChitietTinTuc/>,
       }
     ],
   },
