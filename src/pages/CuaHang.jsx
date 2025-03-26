@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/cuahang.css";
+import '../css/TrangChu.css';
 
 function CuaHang() {
   const [searchTerm, setSearchTerm] = useState("");
