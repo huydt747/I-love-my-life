@@ -131,17 +131,98 @@ function TrangChu() {
             <div className="divider"></div>
 
             {/* Trưng bày sản phẩm */}
-            <section className="showcase-section">
+            <section className="product-showcase">
                 <div className="container">
-                    <h2 className="section-title">Trưng bày sản phẩm</h2>
-                    <div className="showcase-gallery">
-                        {/* Thêm hình ảnh trưng bày sản phẩm ở đây */}
-                        <div className="showcase-item">Sản phẩm 1</div>
-                        <div className="showcase-item">Sản phẩm 2</div>
-                        <div className="showcase-item">Sản phẩm 3</div>
+                    <h2 className="section-title">Sản phẩm nổi bật</h2>
+                    
+                    <div className="product-grid">
+                    {/* Product 1 */}
+                    <div className="product-card">
+                        <div className="product-badge">Bán chạy</div>
+                        <div className="product-image">
+                        <img 
+                            src="https://cdn.nhathuoclongchau.com.vn/unsafe/600x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00021929_perfect_white_60v_3739_600f_large_6794b33ce3.JPG" 
+                            alt="Thực phẩm bảo vệ sức khỏe" 
+                        />
+                        </div>
+                        <div className="product-info">
+                        <h3 className="product-name">Thực phẩm bảo vệ sức khỏe</h3>
+                        <div className="product-price">
+                            <span className="current-price">1.432.000đ</span>
+                            <span className="original-price">1.600.000đ</span>
+                        </div>
+                        <div className="product-rating">
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star"></i>
+                            <span className="rating-count">(128)</span>
+                        </div>
+                        <button className="add-to-cart">
+                            <i className="fas fa-shopping-cart"></i> Thêm vào giỏ
+                        </button>
+                        </div>
+                    </div>
+
+                    {/* Product 2 */}
+                    <div className="product-card">
+                        <div className="product-badge new">Mới</div>
+                        <div className="product-image">
+                        <img 
+                            src="https://example.com/product2.jpg" 
+                            alt="Sản phẩm 2" 
+                        />
+                        </div>
+                        <div className="product-info">
+                        <h3 className="product-name">Viên uống bổ sung collagen</h3>
+                        <div className="product-price">
+                            <span className="current-price">890.000đ</span>
+                        </div>
+                        <div className="product-rating">
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star-half-alt star half"></i>
+                            <span className="rating-count">(256)</span>
+                        </div>
+                        <button className="add-to-cart">
+                            <i className="fas fa-shopping-cart"></i> Thêm vào giỏ
+                        </button>
+                        </div>
+                    </div>
+
+                    {/* Product 3 */}
+                    <div className="product-card">
+                        <div className="product-image">
+                        <img 
+                            src="https://example.com/product3.jpg" 
+                            alt="Sản phẩm 3" 
+                        />
+                        </div>
+                        <div className="product-info">
+                        <h3 className="product-name">Tinh chất dưỡng da</h3>
+                        <div className="product-price">
+                            <span className="current-price">1.250.000đ</span>
+                            <span className="original-price">1.500.000đ</span>
+                        </div>
+                        <div className="product-rating">
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star filled"></i>
+                            <i className="fas fa-star star"></i>
+                            <i className="fas fa-star star"></i>
+                            <span className="rating-count">(64)</span>
+                        </div>
+                        <button className="add-to-cart">
+                            <i className="fas fa-shopping-cart"></i> Thêm vào giỏ
+                        </button>
+                        </div>
+                    </div>
                     </div>
                 </div>
-            </section>
+                </section>
         </div>
     );
 }
