@@ -1,83 +1,102 @@
 import React from "react";
-import "../css/tintuc.css"; // Import CSS đúng cách
+import "../css/tintuc.css";
+import placeholder from '../assets/tintuc/default.png'
+const articles = [
+  {
+    id: 1,
+    author: "John Doe",
+    date: "Aug. 24, 2015",
+    title: "Learning to Code",
+    subtitle: "Opening a door to the future",
+    category: "Coding",
+    image: "https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg",
+  },
+  {
+    id: 2,
+    author: "Jane Doe",
+    date: "July. 15, 2015",
+    title: "Mastering the Language",
+    subtitle: "Java is not the same as JavaScript",
+    category: "JavaScript",
+    image: "https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg",
+  },
+  {
+    id: 3,
+    author: "Alice Smith",
+    date: "Sep. 10, 2022",
+    title: "Understanding AI",
+    subtitle: "How artificial intelligence is shaping the world",
+    category: "AI",
+    image: "",
+  },
+];
+
+const categories = ["Đại hội đồng cổ đông", "Công bố thông tin", "Báo cáo"];
+
+const ArticleCard = ({ article }) => {
+  const imageUrl = article.image ? article.image : placeholder;
+
+  return (
+    <div className="blog-card">
+      <div className="meta">
+        <div className="photo" style={{ backgroundImage: `url(${imageUrl})` }}></div>
+        <ul className="details">
+          <li className="author">
+            <a href="#">{article.author}</a>
+          </li>
+          <li className="date">{article.date}</li>
+          <li className="tags">
+            <ul>
+              <li>
+                <a href="#">Learn</a>
+              </li>
+              <li>
+                <a href="#">{article.category}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div className="description">
+        <h1>{article.title}</h1>
+        <h2>{article.subtitle}</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p className="read-more">
+          <a href="#">Read More</a>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const CategoryList = ({ categories }) => (
+  <div className="category-list">
+    <h3>Tin tức</h3>
+    <h3>Cổ đông</h3>
+    <ul>
+      {categories.map((category, index) => (
+        <li key={index}>
+          <a href="#">{category}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 function TinTuc() {
   return (
     <div className="trang-chu">
-      <div className="container">
+      <div className="news-container">
         <div className="main-content">
-          <h2>Konten Utama</h2>
-          <a href="#">
-            <div className="article">
-              <img
-                src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?crop=entropy&cs=srgb&fm=jpg&q=85"
-                alt="Berita 1"
-              />
-              <div className="text">
-                <h3>
-                  Kecerdasan Buatan dalam Industri Pariwisata: Meningkatkan Pengalaman Wisatawan
-                </h3>
-                <p>
-                  Kecerdasan buatan (AI) semakin banyak digunakan untuk meningkatkan pengalaman wisatawan di seluruh dunia...
-                </p>
-              </div>
-            </div>
-          </a>
-
-          {/* Artikel 2 */}
-          <a href="#">
-            <div className="article">
-              <img
-                src="https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?crop=entropy&cs=srgb&fm=jpg&q=85"
-                alt="Berita 2"
-              />
-              <div className="text">
-                <h3>Destinasi Wisata Terpopuler Tahun 2025: Menyambut Era Baru Pariwisata</h3>
-                <p>
-                  Wisata global telah berkembang pesat seiring dengan meningkatnya kemudahan akses informasi dan transportasi...
-                </p>
-              </div>
-            </div>
-          </a>
-
-          {/* Artikel 3 */}
-          <a href="#">
-            <div className="article">
-              <img
-                src="https://images.unsplash.com/photo-1517832349388-a54430ac9af0?crop=entropy&cs=srgb&fm=jpg&q=85"
-                alt="Berita 3"
-              />
-              <div className="text">
-                <h3>Revolusi Teknologi 5G: Dampaknya pada Kehidupan Sehari-hari</h3>
-                <p>
-                  Teknologi 5G mulai mengubah cara kita berkomunikasi, bekerja, dan berinteraksi dengan dunia sekitar...
-                </p>
-              </div>
-            </div>
-          </a>
+          <h2 className="news-title-name">Tin Tức</h2>
+          {articles.map((article) => (
+            <ArticleCard key={article.id} article={article} />
+          ))}
         </div>
 
-        {/* Sidebar */}
         <div className="sidebar">
-          <h2>SideBar</h2>
-
-          {/* Iklan 1 */}
-          <div className="ad">
-            <h3>Iklan 1</h3>
-            <img
-              src="https://images.unsplash.com/photo-1685967836529-b0e8d6938227?crop=entropy&cs=srgb&fm=jpg&q=85"
-              alt="Iklan 1"
-            />
-          </div>
-
-          {/* Iklan 2 */}
-          <div className="ad">
-            <h3>Iklan 2</h3>
-            <img
-              src="https://images.unsplash.com/photo-1640622332810-039ad9c96409?crop=entropy&cs=srgb&fm=jpg&q=85"
-              alt="Iklan 2"
-            />
-          </div>
+          <h2>Chuyên mục</h2>
+          <CategoryList categories={categories} />
         </div>
       </div>
     </div>

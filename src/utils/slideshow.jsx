@@ -16,7 +16,14 @@ function Slideshow({ images, interval = 3000 }) {
 
     return (
         <div className="slideshow">
-            <img src={images[currentIndex]} alt="Slideshow" className="slide-image" />
+            <div
+                className="slideshow-container"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+                {images.map((src, index) => (
+                    <img key={index} src={src} alt="Slideshow" className="slide-image" />
+                ))}
+            </div>
         </div>
     );
 }

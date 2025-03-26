@@ -113,7 +113,7 @@
     right: 5px;
     top: 5px;
     bottom: 5px;
-    background-color: #f39c12;
+    background-color: #f28534;
     color: white;
     border: none;
     border-radius: 20px;
@@ -126,5 +126,5 @@
   }
   
   .subscribe-form button:hover {
-    background-color: #e67e22;
+    background-color: #f28534;
   }

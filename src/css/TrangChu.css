@@ -23,15 +23,14 @@
     margin: auto;
 }
 .trangchu .block-2 .mini-block{
-    width: 1200px;
-    border: 2px solid black;
+    width: 1000px;
 }
 
 .trangchu .mini-block {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 cột */
-    grid-template-rows: auto auto; /* 2 hàng */
-    gap: 15px;
+    /* grid-template-rows: auto auto; 2 hàng */
+    gap: 70px;
     justify-content: center;
 }
 
@@ -44,19 +43,14 @@
 .trangchu .product img {
     width: 100%;
     max-width: 150px; /* Kích thước ảnh */
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
 }
 
 .trangchu .product-info {
     margin-top: 10px;
-    font-size: 14px;
     font-weight: bold;
 }
 
 /* Block Tin Tức */
-/* Tin tức tổng quan */
 .news-section {
     max-width: 1200px;
     margin: auto;
@@ -79,15 +73,18 @@
 
 /* Bài viết chính */
 .news-main {
+    display: flex;
+    flex-direction: column;
     background: white;
     padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #ddd; /* Thêm gạch ngang */
 }
 
 .news-main img {
-    width: 100%;
+    width: 300px;
     border-radius: 10px;
+    margin: 0 auto;
+    align-items: center;
 }
 
 .news-main h2 {
@@ -117,13 +114,16 @@
     display: flex;
     background: white;
     padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     align-items: center;
+    border-bottom: 1px solid #ddd; /* Thêm gạch ngang */
+}
+
+.news-item:last-child {
+    border-bottom: none; /* Loại bỏ gạch ngang cho item cuối cùng */
 }
 
 .news-item img {
-
+    width: 150px;
     border-radius: 5px;
     margin-right: 10px;
     object-fit: cover;
@@ -146,4 +146,10 @@
     margin-top: 5px;
 }
 
+.news-date {
+    display: block;
+    font-size: 14px;
+    color: #888;
+    margin: 5px 0;
+}
 
