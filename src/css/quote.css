@@ -11,26 +11,26 @@
     position: relative;
 }
 
-.quote {
+.home-quote .quote {
     margin-top: 20px;
     width: 100%;
     font-size: 2rem;
     line-height: 1.5;
 }
 
-.credit {
+.home-quote .credit {
     margin-top: 15px;
     font-family: var(--sans);
     font-size: 0.8rem;
 }
 
-.credit::before {
+.home-quote .credit::before {
     content: "⸛ ";
     vertical-align: middle;
     font-size: 1.4rem;
 }
 
-.fas {
+.home-quote .fas {
     font-size: 3rem;
     color: rgba(255, 170, 0, 0.767);
     margin-right: 5px;
