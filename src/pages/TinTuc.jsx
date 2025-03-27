@@ -5,64 +5,31 @@ import placeholder from '../assets/tintuc/default.png';
 const articles = [
   {
     id: 1,
-    author: "John Doe",
+    author: "Admin",
     date: "Aug. 24, 2015",
-    title: "Learning to Code",
-    subtitle: "Opening a door to the future",
-    category: "Coding",
-    image: "https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg",
-    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium..."
+    title: "LỜI TRI ÂN 45 NĂM THÀNH LẬP BAMEPHARM",
+    category: "Tin tức",
+    image: "https://bamepharm.com.vn/wp-content/uploads/2021/03/45-nam-326x245.jpg",
+    content: "Thực hiện sứ mệnh gắn sản xuất kinh doanh với trách nhiệm xã hội, công ty cổ phần Dược – Vật tư y tế Đắk Lắk"
   },
   {
     id: 2,
-    author: "Jane Doe",
+    author: "Admin",
     date: "July. 15, 2015",
-    title: "Mastering the Language",
-    subtitle: "Java is not the same as JavaScript",
-    category: "JavaScript",
-    image: "https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg",
-    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium..."
+    title: "Kết quả Đại hội cổ đông thường niên năm 2020",
+    category: "Tin tức",
+    image: "https://bamepharm.com.vn/wp-content/uploads/2020/06/Phong-chinh-Dai-hoi-678x509.jpg",
+    content: "Sau thời gian phải gia hạn vì đại dịch Covid-19, sáng ngày 26/06/2020, Bamepharm tổ chức Đại hội đồng cổ đông thường niên 2020 tại "
   },
   {
     id: 3,
-    author: "Alice Smith",
+    author: "Admin",
     date: "Sep. 10, 2022",
-    title: "Understanding AI",
-    subtitle: "How artificial intelligence is shaping the world",
-    category: "AI",
-    image: "",
-    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium..."
+    title: "Kết quả Đại hội Chi bộ nhiệm kỳ 2020-2025",
+    category: "Tin tức",
+    image: "https://bamepharm.com.vn/wp-content/uploads/2020/06/IMG_3594-1-678x509.jpg",
+    content: "Thực hiện Chỉ thị số: 35-CT/TW ngày 30/5/2019 của Bộ Chính trị; Hướng dẫn số 26-HD/BTCTW của Ban Tổ chức Trung ương; Kế hoạch"
   },
-  {
-    id: 4,
-    author: "Bob Johnson",
-    date: "Oct. 5, 2022",
-    title: "The Future of Web Development",
-    subtitle: "Trends and predictions for the next decade",
-    category: "Web Development",
-    image: "https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg",
-    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium..."
-  },
-  {
-    id: 5,
-    author: "Emma Wilson",
-    date: "Nov. 15, 2022",
-    title: "Mobile First Approach",
-    subtitle: "Why it matters more than ever",
-    category: "Mobile",
-    image: "https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg",
-    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium..."
-  },
-  {
-    id: 6,
-    author: "Michael Brown",
-    date: "Dec. 1, 2022",
-    title: "Cybersecurity Essentials",
-    subtitle: "Protecting your digital assets",
-    category: "Security",
-    image: "",
-    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium..."
-  }
 ];
 
 const categories = [
@@ -70,12 +37,12 @@ const categories = [
   { name: "Công bố thông tin", count: 8 },
   { name: "Báo cáo tài chính", count: 15 },
   { name: "Hoạt động công ty", count: 23 },
-  { name: "Tuyển dụng", count: 5 }
+  { name: "Kết quả Đại hội Chi bộ nhiệm kỳ 2020-2025", count: 5 }
 ];
 
 const recentPosts = [
-  { id: 1, title: "Learning to Code", date: "Aug. 24, 2015" },
-  { id: 2, title: "Mastering the Language", date: "July. 15, 2015" },
+  { id: 1, title: "LỜI TRI ÂN 45 NĂM THÀNH LẬP BAMEPHARM", date: "Aug. 24, 2015" },
+  { id: 2, title: "Kết quả Đại hội cổ đông thường niên năm 2020", date: "July. 15, 2015" },
   { id: 3, title: "Understanding AI", date: "Sep. 10, 2022" }
 ];
 
@@ -96,7 +63,6 @@ const ArticleCard = ({ article }) => {
           <span><i className="far fa-calendar-alt"></i> {article.date}</span>
         </div>
         <h3 className="article-title">{article.title}</h3>
-        <p className="article-subtitle">{article.subtitle}</p>
         <p className="article-excerpt">{article.content.substring(0, 150)}...</p>
         <a href="#" className="read-more">
           Đọc tiếp <i className="fas fa-arrow-right"></i>
@@ -123,11 +89,11 @@ const RecentPostItem = ({ post }) => (
   </li>
 );
 
-const TagItem = ({ tag }) => (
-  <li className="tag-item">
-    <a href="#">{tag}</a>
-  </li>
-);
+// const TagItem = ({ tag }) => (
+//   <li className="tag-item">
+//     <a href="#">{tag}</a>
+//   </li>
+// );
 
 function TinTuc() {
   return (
@@ -159,7 +125,7 @@ function TinTuc() {
             <button className="active">1</button>
             <button>2</button>
             <button>3</button>
-            <button>Next <i className="fas fa-arrow-right"></i></button>
+            <button>Trang tiếp <i className="fas fa-arrow-right"></i></button>
           </div>
         </main>
 

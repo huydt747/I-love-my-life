@@ -2,9 +2,6 @@
 .header {
     width: 100%;
     background: linear-gradient(to right, #50C878, #008000);
-
-
-
     padding: 15px 0;
 }
 
@@ -17,7 +14,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     background: linear-gradient(to right, #50C878, #008000);
-
 }
 
 /* Menu */
