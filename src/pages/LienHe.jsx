@@ -11,13 +11,18 @@ function LienHe() {
               {/* Contact Info Section */}
               <div className="contact-info-section">
                 <div className="contact-info-card">
-                  <div className="contact-image-wrapper">
-                    <img
-                      src="https://pagedone.io/asset/uploads/1696488602.png"
-                      alt="Contact Us"
-                      className="contact-image"
-                    />
-                    <h1 className="contact-title">Liên Hệ Chúng Tôi</h1>
+                  <div className="contact-map-wrapper">
+                    <div className="map-container">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7784.998103476081!2d108.046033!3d12.680817!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31721d7fee3de183%3A0x43ae3f2bed973cb9!2zOSBIw7luZyBWxrDGoW5nLCBU4buxIEFuLCBCdcO0biBNYSBUaHXhu5l0LCDEkOG6r2sgTOG6r2ssIFZpZXRuYW0!5e0!3m2!1sen!2sus!4v1743070392406!5m2!1sen!2sus"
+                        width="100%"
+                        height="600px"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        title="Google Map"
+                      ></iframe>
+                    </div>
                   </div>
                   
                   <div className="contact-details">
