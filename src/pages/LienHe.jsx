@@ -32,7 +32,7 @@ function LienHe() {
                       </div>
                       <div className="info-content">
                         <h4>Điện thoại</h4>
-                        <a href="tel:470-601-1911">470-601-1911</a>
+                        <a href="tel"> 0262.381.2394 </a>
                       </div>
                     </div>
                     
@@ -42,7 +42,7 @@ function LienHe() {
                       </div>
                       <div className="info-content">
                         <h4>Email</h4>
-                        <a href="mailto:info@example.com">info@example.com</a>
+                        <a href="mailto:bamepharm@yahoo.com ">bamepharm@yahoo.com </a>
                       </div>
                     </div>
                     
@@ -52,7 +52,7 @@ function LienHe() {
                       </div>
                       <div className="info-content">
                         <h4>Địa chỉ</h4>
-                        <p>654 Sycamore Avenue, Meadowville, WA 76543</p>
+                        <p>9A Hùng Vương, P. Tự An, Tp. Buôn Ma Thuột, Đắk Lắk </p>
                       </div>
                     </div>
                   </div>

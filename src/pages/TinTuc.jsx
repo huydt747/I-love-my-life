@@ -6,7 +6,7 @@ const articles = [
   {
     id: 1,
     author: "Admin",
-    date: "Aug. 24, 2015",
+    date: "1/1/2025",
     title: "LỜI TRI ÂN 45 NĂM THÀNH LẬP BAMEPHARM",
     category: "Tin tức",
     image: "https://bamepharm.com.vn/wp-content/uploads/2021/03/45-nam-326x245.jpg",
@@ -15,7 +15,7 @@ const articles = [
   {
     id: 2,
     author: "Admin",
-    date: "July. 15, 2015",
+    date: "1/1/2025",
     title: "Kết quả Đại hội cổ đông thường niên năm 2020",
     category: "Tin tức",
     image: "https://bamepharm.com.vn/wp-content/uploads/2020/06/Phong-chinh-Dai-hoi-678x509.jpg",
@@ -24,7 +24,7 @@ const articles = [
   {
     id: 3,
     author: "Admin",
-    date: "Sep. 10, 2022",
+    date: "1/1/2025",
     title: "Kết quả Đại hội Chi bộ nhiệm kỳ 2020-2025",
     category: "Tin tức",
     image: "https://bamepharm.com.vn/wp-content/uploads/2020/06/IMG_3594-1-678x509.jpg",
@@ -37,13 +37,13 @@ const categories = [
   { name: "Công bố thông tin", count: 8 },
   { name: "Báo cáo tài chính", count: 15 },
   { name: "Hoạt động công ty", count: 23 },
-  { name: "Kết quả Đại hội Chi bộ nhiệm kỳ 2020-2025", count: 5 }
+  { name: "Tuyển dụng", count: 5 }
 ];
 
 const recentPosts = [
-  { id: 1, title: "LỜI TRI ÂN 45 NĂM THÀNH LẬP BAMEPHARM", date: "Aug. 24, 2015" },
-  { id: 2, title: "Kết quả Đại hội cổ đông thường niên năm 2020", date: "July. 15, 2015" },
-  { id: 3, title: "Understanding AI", date: "Sep. 10, 2022" }
+  { id: 1, title: "LỜI TRI ÂN 45 NĂM THÀNH LẬP BAMEPHARM", date: "1/1/2025" },
+  { id: 2, title: "Kết quả Đại hội cổ đông thường niên năm 2020", date: "1/1/2025" },
+  { id: 3, title: "Kết quả Đại hội Chi bộ nhiệm kỳ 2020-2025", date: "1/1/2025" }
 ];
 
 // const tags = ["Coding", "JavaScript", "AI", "Web", "Mobile", "Security", "Finance", "Business"];
