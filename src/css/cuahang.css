@@ -10,6 +10,15 @@
     margin: 0 auto;
     padding: 20px;
   }
+
+  .cua-hang-card-link {
+    text-decoration: none; /* Loại bỏ gạch chân */
+    color: inherit; /* Kế thừa màu chữ từ phần tử cha */
+  }
+  
+  .cua-hang-card-link:hover {
+    text-decoration: none; /* Đảm bảo không hiện gạch chân khi hover */
+  }
   
   /* Phần tìm kiếm */
   .cua-hang-search {
