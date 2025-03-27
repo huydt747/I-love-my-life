@@ -58,8 +58,6 @@ function LienHe() {
                   </div>
                 </div>
               </div>
-
-              {/* Contact Form Section */}
               <div className="contact-form-section">
                 <div className="form-wrapper">
                   <h2 className="form-title">Gửi tin nhắn cho chúng tôi</h2>
