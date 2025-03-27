@@ -87,16 +87,6 @@ const ChitietSanPham = () => {
       skinType: 'Da khô',
       popularity: 2
     },
-    {
-      id: 5,
-      name: 'Mểng dán mụn Somaderm',
-      description: 'Spot Young Chemical - Kem mụn Sulfur 10% Ointment Coopharm ngăn xuốn mụn và nhằm giao dịch',
-      priceValue: 85000,
-      image: 'https://via.placeholder.com/150x150?text=Somaderm',
-      userTypes: ['Tất cả', 'Phụ nữ có thai'],
-      skinType: 'Da mụn',
-      popularity: 1
-    }
   ];
 
   // Toggle user type selection

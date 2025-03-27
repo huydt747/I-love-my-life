@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../css/cuahang.css";
 import '../css/TrangChu.css';
 
@@ -86,10 +87,16 @@ function CuaHang() {
           <h2>Thuốc theo nhóm trị liệu</h2>
           <div className="cua-hang-grid">
             {filteredCategories.map((category) => (
-              <div key={category.id} className="cua-hang-card">
-                <h3>{category.name}</h3>
-                <p>{category.count} sản phẩm</p>
-              </div>
+              <Link 
+                to={`/chi-tiet-san-pham`} 
+                key={category.id} 
+                className="cua-hang-card-link"
+              >
+                <div className="cua-hang-card">
+                  <h3>{category.name}</h3>
+                  <p>{category.count} sản phẩm</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

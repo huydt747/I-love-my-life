@@ -1,6 +1,7 @@
 import React from "react";
-import "../css/tintuc.css";
 import placeholder from '../assets/tintuc/default.png';
+import "../css/tintuc.css";
+import { Link } from "react-router-dom";
 
 const articles = [
   {
@@ -62,11 +63,13 @@ const ArticleCard = ({ article }) => {
           <span><i className="fas fa-user"></i> {article.author}</span>
           <span><i className="far fa-calendar-alt"></i> {article.date}</span>
         </div>
-        <h3 className="article-title">{article.title}</h3>
+        <h3 className="article-title">
+          <Link to={`/chi-tiet-tin-tuc`}>{article.title}</Link>
+        </h3>
         <p className="article-excerpt">{article.content.substring(0, 150)}...</p>
-        <a href="#" className="read-more">
+        <Link to={`/chi-tiet-tin-tuc`} className="read-more">
           Đọc tiếp <i className="fas fa-arrow-right"></i>
-        </a>
+        </Link>
       </div>
     </div>
   );

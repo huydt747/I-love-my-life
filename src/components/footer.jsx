@@ -31,7 +31,7 @@ function Footer() {
           <h3>Hỗ trợ khách hàng</h3>
           <ul>
             <li>
-              <a href="#">
+              <a href="/lien-he">
                 <i className="fas fa-envelope"></i> Liên hệ
               </a>
             </li>
