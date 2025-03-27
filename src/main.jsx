@@ -1,16 +1,17 @@
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import './index.css'
-import App from './App.jsx'
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import TrangChu from "./pages/TrangChu.jsx";
-import TinTuc from "./pages/TinTuc.jsx";
-import GioiThieu from "./pages/GioiThieu.jsx";
-import CuaHang from "./pages/CuaHang.jsx";
-import LienHe from "./pages/LienHe.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from './App.jsx';
+import './index.css';
+import ChitietSanPham from "./pages/ChitietSanPham.jsx";
 import ChitietTinTuc from "./pages/ChitietTinTuc.jsx";
+import CuaHang from "./pages/CuaHang.jsx";
+import GioiThieu from "./pages/GioiThieu.jsx";
+import LienHe from "./pages/LienHe.jsx";
+import TinTuc from "./pages/TinTuc.jsx";
+import TrangChu from "./pages/TrangChu.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path:"/chi-tiet-tin-tuc",
         element: <ChitietTinTuc/>,
+      },
+      {
+        path:"/chi-tiet-san-pham",
+        element: <ChitietSanPham/>,
       }
     ],
   },
