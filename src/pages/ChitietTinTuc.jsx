@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import '../css/chitiettintuc.css';
+import './chitiettintuc.css';
 
 const ChitietTinTuc = () => {
   // Các hiệu ứng scroll và fade-in giữ nguyên như cũ
