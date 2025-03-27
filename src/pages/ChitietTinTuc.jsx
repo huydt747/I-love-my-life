@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import '../css/chitiettintuc.scss';
+import '../css/chitiettintuc.css';
 
 const ChitietTinTuc = () => {
   // Scroll progress effect
@@ -42,7 +42,7 @@ const ChitietTinTuc = () => {
   }, []);
 
   return (
-    <div className="trang-chu">
+    <div className="chitiettintuc">
   
       {/* Main Content */}
       <div className="news-detail-container">
