@@ -85,8 +85,8 @@ function TrangChu() {
         <div className="container">
           <h2 className="section-title">Các sản phẩm của chúng tôi</h2>
           <div className="products-grid">
-            {products.map((product, index) => (
-              <div className="product-card" key={index}>
+          {products.map((product, index) => (
+              <Link to="/cua-hang"><div className="product-card" key={index}>
                 <div className="product-image">
                   <img src={img3} alt={product.name} />
                   <div className="product-overlay">
@@ -94,7 +94,7 @@ function TrangChu() {
                   </div>
                 </div>
                 <h3 className="product-name">{product.name}</h3>
-              </div>
+              </div></Link>
             ))}
           </div>
         </div>
@@ -117,9 +117,9 @@ function TrangChu() {
                   <a href="#">{news[0].title}</a>
                 </h3>
                 <p>{news[0].excerpt}</p>
-                <a href="#" className="read-more">
+                <Link to="/chi-tiet-tin-tuc"><a href="#" className="read-more">
                   Đọc tiếp →
-                </a>
+                </a></Link>
               </div>
             </div>
 
