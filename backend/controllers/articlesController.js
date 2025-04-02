@@ -2,10 +2,33 @@ const Article = require('../models/articlesModel.js');
 
 exports.getAllArticles = async (req, res) => {
     try {
-        const articles = await Article.findAll();
-        res.json(articles);
+        // Lấy tham số phân trang từ query string
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const offset = (page - 1) * limit;
+
+        // Lấy tổng số bài viết
+        const totalArticles = await Article.getTotalCount();
+        const totalPages = Math.ceil(totalArticles / limit);
+
+        // Lấy bài viết với phân trang
+        const articles = await Article.findAllPaginated(limit, offset);
+
+        res.json({
+            success: true,
+            data: articles,
+            pagination: {
+                currentPage: page,
+                totalPages: totalPages,
+                totalItems: totalArticles,
+                itemsPerPage: limit
+            }
+        });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ 
+            success: false,
+            message: error.message 
+        });
     }
 };
 

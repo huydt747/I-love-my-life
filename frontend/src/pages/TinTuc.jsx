@@ -74,13 +74,19 @@ function TinTuc() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalArticles, setTotalArticles] = useState(0);
+  const postsPerPage = 10;
 
   // Fetch articles từ API
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get('http://localhost:3500/api/articles');
-        setArticles(response.data);
+        const response = await axios.get(`http://localhost:3500/api/articles?page=${currentPage}&limit=${postsPerPage}`);
+        setArticles(response.data.data);
+        setTotalPages(response.data.pagination.totalPages);
+        setTotalArticles(response.data.pagination.totalItems);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -89,7 +95,80 @@ function TinTuc() {
     };
 
     fetchArticles();
-  }, []);
+  }, [currentPage]);
+  
+  // Tính toán bài viết cho trang hiện tại
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = articles.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Thay đổi trang
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const getPaginationButtons = () => {
+    const buttons = [];
+    const maxVisibleButtons = 4; // Số nút tối đa hiển thị (không tính ...)
+
+    // Nếu tổng số trang ít hơn hoặc bằng maxVisibleButtons, hiển thị tất cả
+    if (totalPages <= maxVisibleButtons) {
+      for (let i = 1; i <= totalPages; i++) {
+        buttons.push(i);
+      }
+      return buttons;
+    }
+
+    // Tính toán các nút sẽ hiển thị
+    let startPage, endPage;
+    
+    // Trang hiện tại ở đầu danh sách
+    if (currentPage <= Math.ceil(maxVisibleButtons / 2)) {
+      startPage = 1;
+      endPage = maxVisibleButtons;
+    } 
+    // Trang hiện tại ở cuối danh sách
+    else if (currentPage >= totalPages - Math.floor(maxVisibleButtons / 2)) {
+      startPage = totalPages - maxVisibleButtons + 1;
+      endPage = totalPages;
+    } 
+    // Trang hiện tại ở giữa danh sách
+    else {
+      startPage = currentPage - Math.floor(maxVisibleButtons / 2);
+      endPage = currentPage + Math.floor(maxVisibleButtons / 2);
+    }
+
+    // Thêm nút trang đầu tiên và dấu ... nếu cần
+    if (startPage > 1) {
+      buttons.push(1);
+      if (startPage > 2) {
+        buttons.push('...');
+      }
+    }
+
+    // Thêm các nút trang chính
+    for (let i = startPage; i <= endPage; i++) {
+      buttons.push(i);
+    }
+
+    // Thêm nút trang cuối cùng và dấu ... nếu cần
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        buttons.push('...');
+      }
+      buttons.push(totalPages);
+    }
+
+    return buttons;
+  };
 
   if (loading) return <div className="loading">Đang tải...</div>;
   if (error) return <div className="error">Lỗi: {error}</div>;
@@ -119,11 +198,37 @@ function TinTuc() {
             ))}
           </div>
           
+          {/* Phân trang */}
           <div className="pagination">
-            <button className="active">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>Trang tiếp <i className="fas fa-arrow-right"></i></button>
+            <button 
+              onClick={prevPage} 
+              disabled={currentPage === 1}
+              className="pagination-nav"
+            >
+              <i className="fas fa-arrow-left"></i>
+            </button>
+            
+            {getPaginationButtons().map((item, index) => (
+              item === '...' ? (
+                <span key={index} className="pagination-ellipsis">...</span>
+              ) : (
+                <button
+                  key={index}
+                  onClick={() => paginate(item)}
+                  className={`pagination-page ${currentPage === item ? 'active' : ''}`}
+                >
+                  {item}
+                </button>
+              )
+            ))}
+            
+            <button 
+              onClick={nextPage} 
+              disabled={currentPage === totalPages}
+              className="pagination-nav"
+            >
+               <i className="fas fa-arrow-right"></i>
+            </button>
           </div>
           {/* Phân trang có thể triển khai sau khi API hỗ trợ */}
         </main>

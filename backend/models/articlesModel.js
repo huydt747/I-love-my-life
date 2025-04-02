@@ -37,6 +37,18 @@ class Article {
         return true;
     }
 
+    static async findAllPaginated(limit, offset) {
+        const [rows] = await pool.execute(
+            'SELECT * FROM articles ORDER BY date DESC LIMIT ? OFFSET ?',
+            [limit, offset]
+        );
+        return rows;
+    }
+
+    static async getTotalCount() {
+        const [rows] = await pool.execute('SELECT COUNT(*) as count FROM articles');
+        return rows[0].count;
+    }
     
 }
 
