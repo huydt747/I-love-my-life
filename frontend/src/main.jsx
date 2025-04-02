@@ -7,7 +7,7 @@ import App from './App.jsx';
 import './index.css';
 
 import ChitietSanPham from "./pages/ChitietSanPham.jsx";
-import ChitietTinTuc from "./pages/ChitietTinTuc.jsx";
+import ChitietTinTuc from "./pages/ChiTietTinTuc.jsx";
 import CuaHang from "./pages/CuaHang.jsx";
 import GioiThieu from "./pages/GioiThieu.jsx";
 import LienHe from "./pages/LienHe.jsx";
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <LienHe/>,
       },
       {
-        path:"/chi-tiet-tin-tuc",
+        path:"/chi-tiet-tin-tuc/:slug",
         element: <ChitietTinTuc/>,
       },
       {

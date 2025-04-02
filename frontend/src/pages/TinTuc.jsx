@@ -117,7 +117,7 @@ function TinTuc() {
 
   const getPaginationButtons = () => {
     const buttons = [];
-    const maxVisibleButtons = 4; // Số nút tối đa hiển thị (không tính ...)
+    const maxVisibleButtons = 3; // Số nút tối đa hiển thị (không tính ...)
 
     // Nếu tổng số trang ít hơn hoặc bằng maxVisibleButtons, hiển thị tất cả
     if (totalPages <= maxVisibleButtons) {
@@ -175,7 +175,6 @@ function TinTuc() {
 
   return (
     <div className="news-page">
-      {/* Hero Banner (Giữ nguyên) */}
       <div className="news-hero">
         <div className="container">
           <h1>Tin Tức & Sự Kiện</h1>
@@ -187,9 +186,9 @@ function TinTuc() {
         <main className="news-main">
           <div className="section-header">
             <h2>Tin Tức Mới Nhất</h2>
-            <div className="view-all">
+            {/* <div className="view-all">
               <Link to="/tat-ca-tin-tuc">Xem tất cả <i className="fas fa-arrow-right"></i></Link>
-            </div>
+            </div> */}
           </div>
 
           <div className="articles-grid">
@@ -198,7 +197,6 @@ function TinTuc() {
             ))}
           </div>
           
-          {/* Phân trang */}
           <div className="pagination">
             <button 
               onClick={prevPage} 
@@ -230,12 +228,9 @@ function TinTuc() {
                <i className="fas fa-arrow-right"></i>
             </button>
           </div>
-          {/* Phân trang có thể triển khai sau khi API hỗ trợ */}
         </main>
 
-        {/* Sidebar (Giữ nguyên) */}
         <aside className="news-sidebar">
-          {/* Search Widget */}
           <div className="sidebar-widget search-widget">
             <h3>Tìm kiếm</h3>
             <div className="search-box">
@@ -244,7 +239,6 @@ function TinTuc() {
             </div>
           </div>
 
-          {/* Categories Widget */}
           <div className="sidebar-widget categories-widget">
             <h3>Danh mục</h3>
             <ul className="categories-list">
@@ -254,7 +248,6 @@ function TinTuc() {
             </ul>
           </div>
 
-          {/* Recent Posts Widget */}
           <div className="sidebar-widget recent-posts-widget">
             <h3>Bài viết gần đây</h3>
             <ul className="recent-posts-list">
@@ -264,23 +257,10 @@ function TinTuc() {
             </ul>
           </div>
 
-          {/* Tags Widget
-          <div className="sidebar-widget tags-widget">
-            <h3>Tags</h3>
-            <ul className="tags-list">
-              {tags.map((tag, index) => (
-                <TagItem key={index} tag={tag} />
-              ))}
-            </ul>
-          </div> */}
         </aside>
       </div>
     </div>
   );
 }
-
-
-        
-
 
 export default TinTuc;

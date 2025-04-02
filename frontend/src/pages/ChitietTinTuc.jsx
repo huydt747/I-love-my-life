@@ -1,8 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import '../css/chitiettintuc.css';
 
 const ChitietTinTuc = () => {
-  // Các hiệu ứng scroll và fade-in giữ nguyên như cũ
+  const { slug } = useParams(); // Lấy slug từ URL
+  const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [relatedArticles, setRelatedArticles] = useState([]);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Fetch bài viết dựa trên slug
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`http://localhost:3500/api/articles/slug/${slug}`);
+        setArticle(response.data);
+        
+        // Fetch các bài viết liên quan (cùng category)
+        if (response.data.category) {
+          const relatedRes = await axios.get(`http://localhost:3500/api/articles?category=${response.data.category}&limit=3`);
+          setRelatedArticles(relatedRes.data.data);
+        }
+      } catch (err) {
+        setError(err.response?.data?.message || err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticle();
+  }, [slug]);
+
+  // Hiệu ứng scroll
   useEffect(() => {
     const handleScroll = () => {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -15,20 +47,27 @@ const ChitietTinTuc = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Hiệu ứng fade-in
   useEffect(() => {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    if (!loading && !error) {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
 
-    fadeElements.forEach(element => fadeObserver.observe(element));
-    return () => fadeElements.forEach(element => fadeObserver.unobserve(element));
-  }, []);
+      fadeElements.forEach(element => fadeObserver.observe(element));
+      return () => fadeElements.forEach(element => fadeObserver.unobserve(element));
+    }
+  }, [loading, error]);
+
+  if (loading) return <div className="loading">Đang tải...</div>;
+  if (error) return <div className="error">Lỗi: {error}</div>;
+  if (!article) return <div className="error">Bài viết không tồn tại</div>;
 
   return (
     <div className="chitiettintuc">
@@ -36,85 +75,55 @@ const ChitietTinTuc = () => {
         <main className="news-content">
           <article>
             <header className="article-header">
-              <h1>WHO Phê Duyệt Vắc-xin Sốt Xuất Huyết Đầu Tiên Cho Trẻ Em Tại Châu Á</h1>
-              <p className="article-subtitle">Vắc-xin Qdenga của Takeda được chấp thuận sau thử nghiệm lâm sàng trên 28.000 trẻ, mở ra kỷ nguyên mới phòng bệnh sốt xuất huyết</p>
+              <h1>{article.title}</h1>
+              {article.subtitle && <p className="article-subtitle">{article.subtitle}</p>}
+              <div className="article-meta">
+                <span><i className="fas fa-user"></i> {article.author || "Admin"}</span>
+                <span><i className="far fa-calendar-alt"></i> {new Date(article.date).toLocaleDateString('vi-VN')}</span>
+                {article.category && <span><i className="fas fa-tag"></i> {article.category}</span>}
+              </div>
             </header>
             
-            <div className="article-image-container fade-in">
-              <img 
-                className="article-image" 
-                src="https://officesnapshots.com/wp-content/uploads/2021/08/takeda-offices-bueno-aires-11.jpg" 
-                alt="Vắc-xin sốt xuất huyết Qdenga"
-              />
-              <div className="image-caption">Vắc-xin Qdenga - bước đột phá trong phòng chống sốt xuất huyết. Ảnh: Takeda Pharmaceuticals</div>
-            </div>
-            
-            <div className="article-content">
-              <p>Tổ chức Y tế Thế giới (WHO) vừa chính thức phê duyệt vắc-xin Qdenga (TAK-003) của hãng dược Takeda cho trẻ em từ 6-16 tuổi tại các khu vực có dịch sốt xuất huyết lưu hành, bao gồm nhiều nước Đông Nam Á.</p>
-              
-              <p>Đây là vắc-xin thứ hai được phê duyệt toàn cầu cho bệnh sốt xuất huyết, nhưng là loại đầu tiên không yêu cầu xét nghiệm trước khi tiêm. Kết quả thử nghiệm giai đoạn 3 cho thấy hiệu quả bảo vệ 80,2% chống lại bệnh có triệu chứng và 90,4% chống lại nhập viện.</p>
-              
-              <blockquote>
-                "Qdenga đại diện cho công cụ phòng ngừa mang tính cách mạng, đặc biệt tại các quốc gia có gánh nặng bệnh nặng nề như Việt Nam, Philippines và Indonesia. Chúng tôi ước tính có thể ngăn ngừa 14.000 ca nhập viện mỗi năm tại Đông Nam Á"
-                <footer>— TS. Raman Velayudhan, Trưởng nhóm WHO về bệnh sốt xuất huyết</footer>
-              </blockquote>
-              
-              <p>Vắc-xin hoạt động dựa trên virus sốt xuất huyết type 2 đã làm yếu, tạo miễn dịch chéo với cả 4 type virus. Lịch tiêm gồm 2 mũi cách nhau 3 tháng, bảo vệ kéo dài ít nhất 4,5 năm theo dữ liệu nghiên cứu.</p>
-              
-              <p>Tại Việt Nam, Bộ Y tế đang xem xét đưa Qdenga vào Chương trình Tiêm chủng mở rộng sau khi hoàn tất đánh giá hiệu quả-chi phí. Sốt xuất huyết ghi nhận hơn 300.000 ca mắc và 100 ca tử vong hàng năm tại nước ta.</p>
-              
-              <p>Các chuyên gia khuyến cáo vắc-xin cần được sử dụng kết hợp với các biện pháp kiểm soát muỗi truyền thống. Dự kiến giá bán khoảng 50 USD/mũi tại thị trường tư nhân.</p>
-            </div>
-
-            <section className="related-news">
-              <h2 className="section-title">Tin Liên Quan</h2>
-              <div className="news-grid">
-                <div className="news-card fade-in">
-                  <div className="card-image-container">
-                    <img 
-                      className="card-image" 
-                      src="https://img.freepik.com/free-photo/medical-research-lab_23-2148950279.jpg" 
-                      alt="Nghiên cứu thuốc kháng virus"
-                    />
-                  </div>
-                  <div className="card-content">
-                    <h3 className="card-title">Việt Nam Thử Nghiệm Lâm Sàng Thuốc Kháng Virus Nội Địa</h3>
-                    <p className="card-text">Thuốc Molravin do VinBioCare phát triển cho kết quả khả quan trong điều trị sốt xuất huyết thể nặng.</p>
-                    <a href="#" className="read-more">Xem thêm →</a>
-                  </div>
-                </div>
-                
-                <div className="news-card fade-in">
-                  <div className="card-image-container">
-                    <img 
-                      className="card-image" 
-                      src="https://img.freepik.com/free-photo/healthcare-workers_23-2148857933.jpg" 
-                      alt="Chiến dịch phòng chống sốt xuất huyết"
-                    />
-                  </div>
-                  <div className="card-content">
-                    <h3 className="card-title">Bộ Y Tế Phát Động Chiến Dịch "Không Lăng Quăng" 2023</h3>
-                    <p className="card-text">Tập trung kiểm soát dịch tại 20 tỉnh thành có tỷ lệ mắc sốt xuất huyết cao nhất.</p>
-                    <a href="#" className="read-more">Xem thêm →</a>
-                  </div>
-                </div>
-                
-                <div className="news-card fade-in">
-                  <div className="card-image-container">
-                    <img 
-                      className="card-image" 
-                      src="https://img.freepik.com/free-photo/virus-microscope_23-2148483835.jpg" 
-                      alt="Chủng virus sốt xuất huyết mới"
-                    />
-                  </div>
-                  <div className="card-content">
-                    <h3 className="card-title">Phát Hiện Chủng Virus Sốt Xuất Huyết Genotype Mới Tại ĐBSCL</h3>
-                    <p className="card-text">Chủng DENV-2-C1 có khả năng lây lan nhanh, đang được giám sát đặc biệt.</p>
-                    <a href="#" className="read-more">Xem thêm →</a>
-                  </div>
-                </div>
+            {article.image && (
+              <div className="article-image-container fade-in">
+                <img 
+                  className="article-image" 
+                  src={article.image} 
+                  alt={article.title}
+                />
+                {article.imageCaption && (
+                  <div className="image-caption">{article.imageCaption}</div>
+                )}
               </div>
-            </section>
+            )}
+            
+            <div className="article-content" dangerouslySetInnerHTML={{ __html: article.content }} />
+            
+            {relatedArticles.length > 0 && (
+              <section className="related-news">
+                <h2 className="section-title">Tin Liên Quan</h2>
+                <div className="news-grid">
+                  {relatedArticles.map((related) => (
+                    <div className="news-card fade-in" key={related.id}>
+                      <div className="card-image-container">
+                        <img 
+                          className="card-image" 
+                          src={related.image || 'https://via.placeholder.com/300x200'} 
+                          alt={related.title}
+                        />
+                      </div>
+                      <div className="card-content">
+                        <h3 className="card-title">{related.title}</h3>
+                        <p className="card-text">{related.excerpt.substring(0, 100)}...</p>
+                        <Link to={`/chi-tiet-tin-tuc/${related.slug}`} className="read-more">
+                          Xem thêm →
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
           </article>
         </main>
         
@@ -122,38 +131,16 @@ const ChitietTinTuc = () => {
           <div className="sidebar-section">
             <div className="sidebar-header">Tin Nổi Bật</div>
             <div className="sidebar-content">
-              <ul className="trending-list">
-                <li className="trending-item">
-                  <a href="#" className="trending-link">
-                    <span className="trending-number">1</span>
-                    <span>Việt Nam sản xuất thành công thuốc điều trị đái tháo đường thế hệ mới</span>
-                  </a>
-                </li>
-                <li className="trending-item">
-                  <a href="#" className="trending-link">
-                    <span className="trending-number">2</span>
-                    <span>Bộ Y tế cảnh báo tình trạng kháng kháng sinh gia tăng</span>
-                  </a>
-                </li>
-                <li className="trending-item">
-                  <a href="#" className="trending-link">
-                    <span className="trending-number">3</span>
-                    <span>Ra mắt ứng dụng theo dõi tương tác thuốc đầu tiên tại Việt Nam</span>
-                  </a>
-                </li>
-                <li className="trending-item">
-                  <a href="#" className="trending-link">
-                    <span className="trending-number">4</span>
-                    <span>Phát hiện hoạt chất mới từ cây dược liệu bản địa có tiềm năng kháng ung thư</span>
-                  </a>
-                </li>
-                <li className="trending-item">
-                  <a href="#" className="trending-link">
-                    <span className="trending-number">5</span>
-                    <span>Hội nghị Dược lâm sàng Châu Á-Thái Bình Dương 2023 tại Hà Nội</span>
-                  </a>
-                </li>
-              </ul>
+              {/* <ul className="trending-list">
+                {recentPosts.map((post, index) => (
+                  <li className="trending-item" key={post.id}>
+                    <Link to={`/chi-tiet-tin-tuc/${post.slug || post.id}`} className="trending-link">
+                      <span className="trending-number">{index + 1}</span>
+                      <span>{post.title}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul> */}
             </div>
           </div>
           
@@ -167,39 +154,6 @@ const ChitietTinTuc = () => {
               <p style={{ fontSize: '0.8rem', marginTop: '10px', color: 'var(--text-light)' }}>
                 Nhận tin tức y dược mới nhất. Chúng tôi cam kết bảo mật thông tin.
               </p>
-            </div>
-          </div>
-          
-          <div className="sidebar-section">
-            <div className="sidebar-header">Video Mới</div>
-            <div className="sidebar-content">
-              <div style={{ 
-                background: 'var(--bg-secondary)', 
-                aspectRatio: '16/9', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginBottom: '10px', 
-                borderRadius: 'var(--border-radius)'
-              }}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '5px' }}>▶️</div>
-                  <div>Cơ chế hoạt động của vắc-xin sốt xuất huyết</div>
-                </div>
-              </div>
-              <div style={{ 
-                background: 'var(--bg-secondary)', 
-                aspectRatio: '16/9', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                borderRadius: 'var(--border-radius)'
-              }}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '5px' }}>▶️</div>
-                  <div>Hướng dẫn sử dụng thuốc hạ sốt đúng cách</div>
-                </div>
-              </div>
             </div>
           </div>
         </aside>
