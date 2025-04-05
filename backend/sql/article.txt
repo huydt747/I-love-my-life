@@ -1,9 +1,12 @@
 CREATE TABLE articles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
+    category_id INT,
     image VARCHAR(255),
-    date DATE DEFAULT (CURRENT_DATE),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     excerpt TEXT,
     content LONGTEXT,
-    slug VARCHAR(255) UNIQUE
+    slug VARCHAR(255) UNIQUE,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
 );

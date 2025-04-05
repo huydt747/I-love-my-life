@@ -1,0 +1,66 @@
+DELIMITER //
+CREATE TRIGGER before_insert_categories
+BEFORE INSERT ON categories
+FOR EACH ROW
+BEGIN
+    IF NEW.name IS NOT NULL THEN
+        -- Xử lý tiếng Việt và ký tự đặc biệt
+        SET NEW.slug = LOWER(NEW.name);
+        SET NEW.slug = REGEXP_REPLACE(NEW.slug, '[áàảãạăắằẳẵặâấầẩẫậ]', 'a');
+        SET NEW.slug = REGEXP_REPLACE(NEW.slug, '[éèẻẽẹêếềểễệ]', 'e');
+        SET NEW.slug = REGEXP_REPLACE(NEW.slug, '[íìỉĩị]', 'i');
+        SET NEW.slug = REGEXP_REPLACE(NEW.slug, '[óòỏõọôốồổỗộơớờởỡợ]', 'o');
+        SET NEW.slug = REGEXP_REPLACE(NEW.slug, '[úùủũụưứừửữự]', 'u');
+        SET NEW.slug = REGEXP_REPLACE(NEW.slug, '[ýỳỷỹỵ]', 'y');
+        SET NEW.slug = REGEXP_REPLACE(NEW.slug, '[đ]', 'd');
+        SET NEW.slug = REGEXP_REPLACE(NEW.slug, '[^a-z0-9 ]', '');
+        SET NEW.slug = TRIM(REPLACE(REPLACE(NEW.slug, ' ', '-'), '--', '-'));
+        
+        -- Thêm timestamp để đảm bảo unique
+        SET NEW.slug = CONCAT(NEW.slug, '-', UNIX_TIMESTAMP());
+    END IF;
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER before_update_categories
+BEFORE UPDATE ON categories
+FOR EACH ROW
+BEGIN
+    DECLARE base_slug VARCHAR(255);
+    DECLARE temp_slug VARCHAR(255);
+    DECLARE slug_count INT;
+    DECLARE counter INT DEFAULT 1;
+    
+    IF NEW.name IS NOT NULL AND (NEW.name != OLD.name OR NEW.slug IS NULL) THEN
+        -- Tạo slug cơ sở
+        SET base_slug = LOWER(NEW.name);
+        SET base_slug = REGEXP_REPLACE(base_slug, '[áàảãạăắằẳẵặâấầẩẫậ]', 'a');
+        SET base_slug = REGEXP_REPLACE(base_slug, '[éèẻẽẹêếềểễệ]', 'e');
+        SET base_slug = REGEXP_REPLACE(base_slug, '[íìỉĩị]', 'i');
+        SET base_slug = REGEXP_REPLACE(base_slug, '[óòỏõọôốồổỗộơớờởỡợ]', 'o');
+        SET base_slug = REGEXP_REPLACE(base_slug, '[úùủũụưứừửữự]', 'u');
+        SET base_slug = REGEXP_REPLACE(base_slug, '[ýỳỷỹỵ]', 'y');
+        SET base_slug = REGEXP_REPLACE(base_slug, '[đ]', 'd');
+        SET base_slug = REGEXP_REPLACE(base_slug, '[^a-z0-9 ]', '');
+        SET base_slug = TRIM(REPLACE(REPLACE(base_slug, ' ', '-'), '--', '-'));
+        
+        -- Kiểm tra slug trùng lặp
+        SET temp_slug = base_slug;
+        
+        SELECT COUNT(*) INTO slug_count FROM articles WHERE slug = temp_slug AND id != NEW.id;
+        
+        WHILE slug_count > 0 DO
+            SET temp_slug = CONCAT(base_slug, '-', counter);
+            SELECT COUNT(*) INTO slug_count FROM articles WHERE slug = temp_slug AND id != NEW.id;
+            SET counter = counter + 1;
+            -- Phòng trường hợp vòng lặp vô hạn
+            IF counter > 100 THEN
+                SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Could not generate unique slug';
+            END IF;
+        END WHILE;
+        
+        SET NEW.slug = temp_slug;
+    END IF;
+END//
+DELIMITER ;

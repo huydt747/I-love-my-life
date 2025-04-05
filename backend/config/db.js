@@ -7,23 +7,24 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   waitForConnections: true,
-  connectionLimit: 10, // Số kết nối tối đa trong pool
-  queueLimit: 0
+  connectionLimit: 20,
+  queueLimit: 0,
+  idleTimeout: 60000
 });
 
 // Kiểm tra kết nối khi khởi động
 pool.getConnection((err, connection) => {
   if (err) {
-    console.error('❌ Database connection failed:', err.stack);
+    console.error('Kết nối CSDL thất bại:', err.stack);
     return;
   }
-  console.log('✅ Connected to database as ID', connection.threadId);
+  console.log('Một phiên đang dùng web với ID', connection.threadId);
   connection.release(); // Trả kết nối về pool
 });
 
 // Xử lý sự kiện lỗi để tránh crash app
 pool.on('error', (err) => {
-  console.error('🛑 Database error:', err.code);
+  console.error('Lỗi CSDL:', err.code);
 });
 
 // Export promise-based interface để dùng async/await

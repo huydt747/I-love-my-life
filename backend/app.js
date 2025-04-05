@@ -7,12 +7,14 @@ app.use(cors());
 
 // Routes
 const articlesRoutes = require('./routes/articlesRoutes.js');
+const categoriesRoutes = require('./routes/categoriesRoutes.js');
 
 // Middleware
 app.use(express.json());
 
 // API Routes
 app.use('/api/articles', articlesRoutes);
+app.use('/api/categories', categoriesRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

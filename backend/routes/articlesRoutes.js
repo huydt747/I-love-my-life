@@ -11,6 +11,8 @@ router.get('/:id', articleController.getArticleById);
 // Get article by slug
 router.get('/slug/:slug', articleController.getArticleBySlug);
 
+router.get('/search', articleController.searchArticles);
+
 // Create a new article
 router.post('/', articleController.createArticle);
 
