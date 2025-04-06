@@ -1,57 +1,69 @@
 import React, { useState, useEffect } from "react";
 import "../css/header.css";
-import logo from '../assets/logo.webp';
+import logo from "../assets/logo.webp";
 
 function Header() {
-    const [sticky, setSticky] = useState(false);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [sticky, setSticky] = useState(false);
+  const [newsDropdownOpen, setNewsDropdownOpen] = useState(false);
+  const [shareholderDropdownOpen, setShareholderDropdownOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setSticky(window.scrollY > 105);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    const toggleDropdown = () => {
-        setDropdownOpen(!dropdownOpen);
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 105);
     };
 
-    const closeDropdown = () => {
-        setDropdownOpen(false);
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return (
-        <div>
-            <div className="header-image">
-                <a href="/"><img src={logo} alt="" /></a>
+  return (
+    <div>
+      <div className="header-image">
+        <a href="/">
+          <img src={logo} alt="Logo" />
+        </a>
+      </div>
+      <nav className={`header ${sticky ? "sticky" : ""}`}>
+        <ul>
+          <li><a href="/">TRANG CHỦ</a></li>
+          <li><a href="/gioi-thieu">GIỚI THIỆU</a></li>
+          <li><a href="/san-pham">SẢN PHẨM</a></li>
+          <li><a href="/phan-phoi">PHÂN PHỐI</a></li>
+
+          <li
+            className="nav-dropdown"
+            onMouseEnter={() => setShareholderDropdownOpen(true)}
+            onMouseLeave={() => setShareholderDropdownOpen(false)}
+          >
+            <a href="/quan-he-co-dong">
+              QUAN HỆ CỔ ĐÔNG {shareholderDropdownOpen ? "▴" : "▾"}
+            </a>
+            <div className={`nav-dropdown-menu ${shareholderDropdownOpen ? "show" : ""}`}>
+              <a href="/quan-he-co-dong/bao-cao-tai-chinh">Báo cáo tài chính</a>
+              <a href="/quan-he-co-dong/dai-hoi-co-dong">Đại hội cổ đông</a>
             </div>
-            <nav className={`header ${sticky ? "sticky" : ""}`}>
-                <ul>
-                    <li><a href="/">Trang Chủ</a></li>
-                    <li><a href="/gioi-thieu">Giới Thiệu</a></li>
-                    <li className="dropdown" 
-                        onMouseEnter={toggleDropdown}
-                        onMouseLeave={closeDropdown}>
-                        <a href="/tin-tuc" className="toggle">
-                            Tin Tức {dropdownOpen ? '▴' : '▾'}
-                        </a>
-                        {dropdownOpen && (
-                            <div className="dropdown-menu">
-                                <a href="/tin-tuc/tin-moi">Tin Mới</a>
-                                <a href="/tin-tuc/su-kien">Sự Kiện</a>
-                                <a href="/tin-tuc/khuyen-mai">Khuyến Mãi</a>
-                            </div>
-                        )}
-                    </li>
-                    <li><a href="/cua-hang">Cửa Hàng</a></li>
-                    <li><a href="/lien-he">Liên Hệ</a></li>
-                </ul>
-            </nav>
-        </div>
-    );
+          </li>
+
+          <li
+            className="nav-dropdown"
+            onMouseEnter={() => setNewsDropdownOpen(true)}
+            onMouseLeave={() => setNewsDropdownOpen(false)}
+          >
+            <a href="/tin-tuc">
+              TIN TỨC {newsDropdownOpen ? "▴" : "▾"}
+            </a>
+            <div className={`nav-dropdown-menu ${newsDropdownOpen ? "show" : ""}`}>
+              <a href="/dai-hoi-dong-co-dong">Đại hội đồng cổ đông</a>
+              <a href="/hoat-dong-cong-ty">Hoạt động công ty</a>
+              <a href="/tuyen-dung">Tuyển dụng</a>
+            </div>
+          </li>
+
+          <li><a href="/lien-he">LIÊN HỆ</a></li>
+        </ul>
+      </nav>
+    </div>
+  );
 }
 
 export default Header;
