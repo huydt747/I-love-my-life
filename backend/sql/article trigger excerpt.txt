@@ -1,0 +1,27 @@
+DELIMITER //
+
+CREATE TRIGGER set_default_excerpt
+BEFORE INSERT ON articles
+FOR EACH ROW
+BEGIN
+    -- Kiểm tra nếu excerpt là NULL hoặc chuỗi rỗng
+    IF NEW.excerpt IS NULL OR NEW.excerpt = '' THEN
+        -- Đặt giá trị mặc định (có thể thay đổi theo nhu cầu)
+        SET NEW.excerpt = CONCAT('Bấm vào để xem chi tiết');
+    END IF;
+END//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER update_default_excerpt
+BEFORE UPDATE ON articles
+FOR EACH ROW
+BEGIN
+    IF NEW.excerpt IS NULL OR NEW.excerpt = '' THEN
+        SET NEW.excerpt = CONCAT('Bấm vào để xem chi tiết');
+    END IF;
+END//
+
+DELIMITER ;

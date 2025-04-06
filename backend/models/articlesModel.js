@@ -3,14 +3,14 @@ const pool = require('../config/db.js');
 class Article {
     static async create({ title, image, excerpt, content, slug }) {
         const [result] = await pool.execute(
-            'INSERT INTO articles (title, image, date, excerpt, content, slug) VALUES (?, ?, CURRENT_DATE, ?, ?, ?)',
+            'INSERT INTO articles (title, image, created_at, excerpt, content, slug) VALUES (?, ?, CURRENT_DATE, ?, ?, ?)',
             [title, image, excerpt, content, slug]
         );
         return result.insertId;
     }
 
     static async findAll() {
-        const [rows] = await pool.execute('SELECT * FROM articles ORDER BY date DESC');
+        const [rows] = await pool.execute('SELECT * FROM articles ORDER BY created_at DESC');
         return rows;
     }
 
@@ -37,17 +37,40 @@ class Article {
         return true;
     }
 
-    static async findAllPaginated(limit, offset) {
-        const [rows] = await pool.execute(
-            'SELECT * FROM articles ORDER BY date DESC LIMIT ? OFFSET ?',
-            [limit, offset]
-        );
-        return rows;
+    static async getTotalCount(whereClause = '', params = []) {
+        const [rows] = await pool.query(`SELECT COUNT(*) as total FROM articles ${whereClause}`, params);
+        return rows[0].total;
     }
 
-    static async getTotalCount() {
-        const [rows] = await pool.execute('SELECT COUNT(*) as count FROM articles');
-        return rows[0].count;
+    static async findAllPaginated(whereClause = '', params = [], limit, offset) {
+        const query = `
+            SELECT a.*, c.name as category_name 
+            FROM articles a
+            LEFT JOIN categories c ON a.category_id = c.id
+            ${whereClause}
+            ORDER BY a.created_at DESC
+            LIMIT ? OFFSET ?
+        `;
+        const [rows] = await pool.query(query, [...params, limit, offset]);
+        return rows;
+    }
+    
+    static async search(searchTerm, limit, offset) {
+        const [rows] = await pool.execute(
+            `SELECT * FROM articles 
+             WHERE title LIKE ? OR content LIKE ? 
+             ORDER BY created_at DESC 
+             LIMIT ? OFFSET ?`,
+            [`%${searchTerm}%`, `%${searchTerm}%`, limit, offset]
+        );
+        
+        const [countRows] = await pool.execute(
+            `SELECT COUNT(*) as count FROM articles 
+             WHERE title LIKE ? OR content LIKE ?`,
+            [`%${searchTerm}%`, `%${searchTerm}%`]
+        );
+        
+        return [rows, countRows[0].count];
     }
     
 }

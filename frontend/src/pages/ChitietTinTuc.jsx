@@ -34,19 +34,6 @@ const ChitietTinTuc = () => {
     fetchArticle();
   }, [slug]);
 
-  // Hiệu ứng scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      setScrollProgress(scrolled);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   // Hiệu ứng fade-in
   useEffect(() => {
     if (!loading && !error) {
@@ -115,9 +102,9 @@ const ChitietTinTuc = () => {
                       <div className="card-content">
                         <h3 className="card-title">{related.title}</h3>
                         <p className="card-text">{related.excerpt.substring(0, 100)}...</p>
-                        <Link to={`/chi-tiet-tin-tuc/${related.slug}`} className="read-more">
+                        {/* <Link to={`/chi-tiet-tin-tuc/${related.slug}`} className="read-more">
                           Xem thêm →
-                        </Link>
+                        </Link> */}
                       </div>
                     </div>
                   ))}
@@ -128,10 +115,10 @@ const ChitietTinTuc = () => {
         </main>
         
         <aside className="sidebar">
-          <div className="sidebar-section">
+          {/* <div className="sidebar-section">
             <div className="sidebar-header">Tin Nổi Bật</div>
             <div className="sidebar-content">
-              {/* <ul className="trending-list">
+              <ul className="trending-list">
                 {recentPosts.map((post, index) => (
                   <li className="trending-item" key={post.id}>
                     <Link to={`/chi-tiet-tin-tuc/${post.slug || post.id}`} className="trending-link">
@@ -140,7 +127,7 @@ const ChitietTinTuc = () => {
                     </Link>
                   </li>
                 ))}
-              </ul> */}
+              </ul>
             </div>
           </div>
           
@@ -155,7 +142,7 @@ const ChitietTinTuc = () => {
                 Nhận tin tức y dược mới nhất. Chúng tôi cam kết bảo mật thông tin.
               </p>
             </div>
-          </div>
+          </div> */}
         </aside>
       </div>
     </div>

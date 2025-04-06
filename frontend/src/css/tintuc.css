@@ -65,6 +65,7 @@
 
 /* Article Card */
 .article-card {
+  min-height: 400px;
   background: white;
   border-radius: 8px;
   overflow: hidden;
@@ -224,10 +225,11 @@
   text-decoration: none;
   color: var(--text-color);
   transition: color 0.3s;
+  cursor: pointer;
 }
 
-.category-item a:hover {
-  color: var(--primary-color);
+.category-item.active a {
+  color: var(--primary-color)
 }
 
 .category-item span {
