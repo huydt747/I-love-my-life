@@ -13,6 +13,7 @@ import GioiThieu from "./pages/GioiThieu.jsx";
 import LienHe from "./pages/LienHe.jsx";
 import TinTuc from "./pages/TinTuc.jsx";
 import TrangChu from "./pages/TrangChu.jsx";
+import PhanPhoi from "./pages/PhanPhoi.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path:"/chi-tiet-san-pham",
         element: <ChitietSanPham/>,
+      },
+      {
+        path:"/phan-phoi",
+        element: <PhanPhoi/>,
       }
     ],
   },

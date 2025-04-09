@@ -348,59 +348,53 @@ function TrangChu() {
 
     <hr />
 
-      <div className="container">
-        <h1 className="text-2xl font-bold text-center mb-6">
-          HỆ THỐNG PHÂN PHỐI
-        </h1>
-        <div className="mb-8 p-4 border rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-2">TRỤ SỞ CHÍNH</h2>
-          <p className="mb-1">
-            <strong>CÔNG TY CỔ PHẦN DƯỢC PHẨM TYPHAIRM</strong>
-          </p>
-          <p className="mb-1">
-            Địa chỉ: 27 Nguyễn Chí Thanh, Phường 9, TP. Trà Vinh, Tỉnh Trà Vinh
-          </p>
-          <p className="mb-1">Điện thoại: 1900 636 684</p>
-          <p className="mb-1">Email: info@hopham.vn</p>
-        </div>
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">CHI NHÁNH</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {Object.keys(branches)
-              .filter((b) => b !== "TRỤ SỖ CHÍNH")
-              .map((branch) => (
-                <button
-                  key={branch}
-                  onClick={() => handleBranchClick(branch)}
-                  className={`p-3 border rounded-lg text-center hover:bg-gray-100 ${
-                    selectedBranch === branch
-                      ? "bg-blue-100 border-blue-500"
-                      : ""
-                  }`}
-                >
-                  {branch}
-                </button>
-              ))}
-          </div>
-        </div>
+    <div className="distribution-system-container">
+  <h1 className="title-header">HỆ THỐNG PHÂN PHỐI</h1>
 
-        <div className="mt-8">
-          <h3 className="text-lg font-semibold mb-2">
-            {selectedBranch}: {branches[selectedBranch].address}
-          </h3>
-          <div className="w-full h-96">
-            <iframe
-              title={`Bản đồ ${selectedBranch}`}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              style={{ border: 0 }}
-              src={branches[selectedBranch].mapUrl}
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
+  <div className="headquarters-box">
+    <h2 className="map-title">TRỤ SỞ CHÍNH</h2>
+    <p className="company-name"><strong>CÔNG TY CỔ PHẦN DƯỢC PHẨM TYPHAIRM</strong></p>
+    <p className="company-address">Địa chỉ: 27 Nguyễn Chí Thanh, Phường 9, TP. Trà Vinh, Tỉnh Trà Vinh</p>
+    <p className="company-phone">Điện thoại: 1900 636 684</p>
+    <p className="company-email">Email: info@hopham.vn</p>
+  </div>
+
+  <div className="branch-section">
+    <h2 className="map-title">CHI NHÁNH</h2>
+    <div className="branch-grid">
+      {Object.keys(branches)
+        .filter((b) => b !== "TRỤ SỞ CHÍNH")
+        .map((branch) => (
+          <button
+            key={branch}
+            onClick={() => handleBranchClick(branch)}
+            className={`branch-button ${
+              selectedBranch === branch ? "selected-branch" : ""
+            }`}
+          >
+            {branch}
+          </button>
+        ))}
+    </div>
+  </div>
+
+  <div className="map-section">
+    <h3 className="selected-branch-title">
+      {selectedBranch}: {branches[selectedBranch].address}
+    </h3>
+    <div className="map-container">
+      <iframe
+        title={`Bản đồ ${selectedBranch}`}
+        width="100%"
+        height="100%"
+        frameBorder="0"
+        style={{ border: 0 }}
+        src={branches[selectedBranch].mapUrl}
+        allowFullScreen
+      ></iframe>
+    </div>
+  </div>
+</div>
     </div>
   );
 }
