@@ -84,4 +84,210 @@
   color: #2c7a2c;
   margin-bottom: 5px;
 }
+
+/* Leadership Section */
+.leadership-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #2c5282;
+  margin-bottom: 50px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, #4299e1, #2b6cb0);
+}
+
+.leadership-board {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  margin-bottom: 40px;
+  transition: transform 0.3s ease;
+}
+
+.leadership-board:hover {
+  transform: translateY(-5px);
+}
+
+.audit-board {
+  background: linear-gradient(135deg, #f7fafc 0%, #ebf8ff 100%);
+  border: 1px solid #bee3f8;
+}
+
+.board-title {
+  font-size: 1.5rem;
+  color: #2b6cb0;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.board-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #4299e1;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.member-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  border: 1px solid #ebf8ff;
+}
+
+.member-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: #bee3f8;
+}
+
+.member-avatar {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.member-info {
+  flex: 1;
+}
+
+.member-name {
+  font-size: 1.1rem;
+  color: #2d3748;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.member-position {
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+/* CEO Card */
+.ceo-card {
+  max-width: 500px;
+  margin: 50px auto;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  border-left: 5px solid #3182ce;
+  position: relative;
+  z-index: 1;
+}
+
+.ceo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(66, 153, 225, 0.1) 0%, rgba(49, 130, 206, 0.1) 100%);
+  z-index: -1;
+}
+
+.ceo-avatar {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #2b6cb0 0%, #3182ce 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: 30px;
+  flex-shrink: 0;
+}
+
+.ceo-info {
+  flex: 1;
+}
+
+.ceo-name {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.ceo-position {
+  color: #4a5568;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .members-grid {
+    grid-template-columns: 1fr;
+  }
   
+  .ceo-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+  
+  .ceo-avatar {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .member-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 15px;
+  }
+  
+  .member-avatar {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}
