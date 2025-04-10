@@ -9,13 +9,7 @@
 .header.sticky {
     position: fixed;
     top: 0;
-    animation: slideDown 0.3s ease-out;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
 }
 
 .header ul {

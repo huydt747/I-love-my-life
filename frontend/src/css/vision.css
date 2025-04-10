@@ -1,0 +1,150 @@
+.vision-section {
+    padding: 30px 0;
+    width: 100%; /* Thay đổi từ 1550px thành 100% để responsive tốt hơn */
+    max-width: 1550px; /* Thêm max-width để giới hạn kích thước tối đa */
+    margin: 0 auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+}
+  
+.section-heading::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #4CAF50;
+}
+  
+.vision-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid #e0e0e0;
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color: white;
+}
+  
+  /* Điều chỉnh card ngắn lại và rộng hơn */
+.vision-card {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    background-color: #f8f8f8;
+    transition: all 0.3s ease;
+    height: 250px; /* Giảm chiều cao xuống 250px */
+    min-height: 250px; /* Đảm bảo chiều cao tối thiểu */
+}
+  
+.vision-card.hovered {
+    background-color: #4CAF50;
+}
+  
+  .vision-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .vision-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #4CAF50;
+    transition: all 0.3s ease;
+  }
+  
+  .vision-card.hovered .vision-icon {
+    color: white;
+    transform: scale(1.1);
+  }
+  
+  .vision-title {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+  
+  .vision-card.hovered .vision-title {
+    color: white;
+  }
+  
+  .vision-hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(76, 175, 80, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .vision-card.hovered .vision-hover-content {
+    opacity: 1;
+  }
+  
+  .vision-description {
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+  }
+  
+  .vision-tooltip {
+    color: white;
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.8;
+  }
+  
+  .mission-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .mission-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border-left: 5px solid #4CAF50;
+  }
+  
+  .mission-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  
+  .mission-card h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+  }

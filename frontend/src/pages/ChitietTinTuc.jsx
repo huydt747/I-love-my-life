@@ -66,7 +66,7 @@ const ChitietTinTuc = () => {
               {article.subtitle && <p className="article-subtitle">{article.subtitle}</p>}
               <div className="article-meta">
                 <span><i className="fas fa-user"></i> {article.author || "Admin"}</span>
-                <span><i className="far fa-calendar-alt"></i> {new Date(article.date).toLocaleDateString('vi-VN')}</span>
+                <span><i className="far fa-calendar-alt"></i> {new Date(article.created_at).toLocaleDateString('vi-VN')}</span>
                 {article.category && <span><i className="fas fa-tag"></i> {article.category}</span>}
               </div>
             </header>

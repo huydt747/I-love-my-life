@@ -4,4 +4,7 @@ body {
     font-optical-sizing: auto !important;
     font-style: normal !important;
   }
-  
+
+a {
+  text-decoration: none !important;
+}

@@ -3,6 +3,7 @@ import placeholder from '../assets/tintuc/default.png';
 import "../css/tintuc.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import debounce from 'lodash/debounce';
 
 const recentPosts = [
   { id: 1, title: "LỜI TRI ÂN 45 NĂM THÀNH LẬP BAMEPHARM", date: "1/1/2025" },
@@ -120,7 +121,7 @@ function TinTuc() {
   const handleSearch = (e) => {
     e.preventDefault();
     setCurrentPage(1);
-    console.log("Search Query:", searchQuery);
+    fetchArticles();
   };
   
   // Tính toán bài viết cho trang hiện tại
@@ -264,17 +265,17 @@ function TinTuc() {
         <aside className="news-sidebar">
           <div className="sidebar-widget search-widget">
             <h3>Tìm kiếm</h3>
-            <div className="search-box">
-            <input 
-              type="text" 
-              placeholder="Tìm kiếm tin tức..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)} 
-            />
-              <button onClick={handleSearch}>
-                <i className="fas fa-arrow-right"></i>
+            <form onSubmit={handleSearch} className="search-box">
+              <input 
+                type="text" 
+                placeholder="Tìm kiếm tin tức..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)} 
+              />
+              <button type="submit">
+                <i className="fas fa-search"></i>
               </button>
-            </div>
+            </form>
           </div>
 
           <div className="sidebar-widget categories-widget">
