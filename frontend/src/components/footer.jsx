@@ -1,18 +1,19 @@
 import React from "react";
 import '../css/footer.css';
+import logo from "../assets/logo.jpg";
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        {/* Column 1: Về TV.PHARM */}
+        {/* Column 1: Về BAMEPHARM */}
         <div className="footer-column">
-          <h3 className="footer-title">VỀ TV.PHARM</h3>
+          <h3 className="footer-title">VỀ BAMEPHARM</h3>
           <ul className="footer-list">
-            <li>Tầm nhìn - Sứ mệnh</li>
-            <li>Hành trình phát triển</li>
-            <li>Thành tựu</li>
-            <li>Cổ đông tổ chức</li>
+            <li><a href="">Tầm nhìn - Sứ mệnh</a></li>
+            <li><a href="">Hành trình phát triển</a></li>
+            <li><a href="">Thành tựu</a></li>
+            <li><a href="">Cổ đông tổ chức</a></li>
           </ul>
         </div>
 
@@ -20,7 +21,7 @@ function Footer() {
         <div className="footer-column">
           <h3 className="footer-title">SẢN PHẨM</h3>
           <ul className="footer-list">
-            <li>Danh mục sản phẩm TV.PHARM</li>
+            <li><a href="">Danh mục sản phẩm TV.PHARM</a></li>
           </ul>
         </div>
 
@@ -28,9 +29,9 @@ function Footer() {
         <div className="footer-column">
           <h3 className="footer-title">TIN TỨC</h3>
           <ul className="footer-list">
-            <li>Trách nhiệm cộng đồng</li>
-            <li>Hoạt động truyền thông TV.PHARM</li>
-            <li>Sức khỏe & Đời sống</li>
+            <li><a href="">Đại hội đồng cổ đông</a></li>
+            <li><a href="">Hoạt động công ty</a></li>
+            <li><a href="">Tuyển dụng</a></li>
           </ul>
         </div>
 
@@ -46,7 +47,7 @@ function Footer() {
         {/* Right Side: Đã Thông Báo Bộ Công Thương */}
         <div className="footer-badge">
           <img
-            src="https://placehold.co/150x60/blue/white?text=ĐÃ+THÔNG+BÁO+BỘ+CÔNG+THƯƠNG"
+            src="https://placehold.co/150x60/0056b3/ffffff?text=ĐÃ+THÔNG+BÁO+BỘ+CÔNG+THƯƠNG"
             alt="Đã Thông Báo Bộ Công Thương"
             className="badge-image"
           />
@@ -57,51 +58,50 @@ function Footer() {
       <div className="footer-bottom">
         <div className="footer-bottom-left">
           <img
-            src="https://placehold.co/50x50?text=TV.PHARM"
-            alt="TV.PHARM Logo"
+            src={logo}
+            alt="Logo"
             className="footer-logo"
           />
           <div className="footer-company-info">
             <p>
-              <strong>CÔNG TY CỔ PHẦN DƯỢC PHẨM TV.PHARM</strong>
+              <strong>CÔNG TY CỔ PHẦN DƯỢC PHẨM - Y TẾ ĐẮK LẮK BAMEPHARM</strong>
             </p>
             <p>
-              Giấy chứng nhận đăng ký doanh nghiệp số: 2100274872 do Sở Kế Hoạch
-              và Đầu Tư Tỉnh Trà Vinh cấp ngày 30 tháng 12 năm 2017
+              Giấy chứng nhận đăng ký doanh nghiệp số: 4003000036 do Sở Kế Hoạch
+              và Đầu Tư Tỉnh Đắk Lắk cấp ngày 25 tháng 04 năm 2008
             </p>
             <p>
-              Địa chỉ: 27 Nguyễn Thị Minh Khai, Phường 9, TP Trà Vinh, Tỉnh Trà
-              Vinh
+              Địa chỉ: 9A Hùng Vương, P. Tự An, Tp. Buôn Ma Thuột, Đắk Lắk
             </p>
-            <p>Liên hệ: 1900 636 684</p>
-            <p>Email: info@tvpharm.vn</p>
+            <p>Liên hệ: 0262.381.2394</p>
+            <p>Email: bamepharm@yahoo.com</p>
           </div>
         </div>
 
         <div className="footer-bottom-right">
-          <h3 className="footer-title">KẾT NỐI CÙNG TV.PHARM</h3>
+          <h3 className="footer-title">KẾT NỐI CÙNG BAMEPHARM</h3>
           <div className="social-icons">
             <a href="#" className="social-icon">
               <img
-                src="https://placehold.co/30x30?text=f"
+                src="https://placehold.co/30x30/3b5998/ffffff?text=f"
                 alt="Facebook"
               />
             </a>
             <a href="#" className="social-icon">
               <img
-                src="https://placehold.co/30x30?text=yt"
+                src="https://placehold.co/30x30/ff0000/ffffff?text=yt"
                 alt="YouTube"
               />
             </a>
             <a href="#" className="social-icon">
               <img
-                src="https://placehold.co/30x30?text=in"
+                src="https://placehold.co/30x30/0077b5/ffffff?text=in"
                 alt="LinkedIn"
               />
             </a>
             <a href="#" className="social-icon">
               <img
-                src="https://placehold.co/30x30?text=cart"
+                src="https://placehold.co/30x30/ff5a00/ffffff?text=cart"
                 alt="Shop"
               />
             </a>

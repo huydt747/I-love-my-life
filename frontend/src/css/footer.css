@@ -1,118 +1,173 @@
 .footer {
-  background-color: #28a745; /* Orange background from the image */
+  background-color: #28a745;
   color: #fff;
-  padding-top: 20px;
+  padding: 15px 0 10px;
+  font-family: 'Arial', sans-serif;
 }
 
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding: 0 15px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .footer-column {
   flex: 1;
-  margin-right: 20px;
+  min-width: 150px;
+  margin: 0 10px 10px;
 }
 
 .footer-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 700; /* Đậm hơn */
+  margin-bottom: 12px;
   text-transform: uppercase;
+  color: #fff; /* Màu trắng tươi */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Hiệu ứng bóng chữ */
 }
 
 .footer-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-list li {
+  margin-bottom: 8px;
   font-size: 14px;
-  margin-bottom: 10px;
-  cursor: pointer;
 }
 
-.footer-list li:hover {
-  text-decoration: underline;
+.footer-list a {
+  color: rgba(255, 255, 255, 0.95); /* Sáng hơn */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 2px 0;
+  font-weight: 500; /* Đậm vừa */
+}
+
+.footer-list a:hover {
+  color: #fff;
+  transform: translateX(3px); /* Di chuyển nhẹ khi hover */
+  text-shadow: 0 0 5px rgba(255,255,255,0.5); /* Hiệu ứng sáng */
 }
 
 .footer-badge {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .badge-image {
-  width: 150px;
-  height: 60px;
+  width: 140px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.badge-image:hover {
+  transform: scale(1.05); /* Phóng nhẹ khi hover */
 }
 
 .footer-bottom {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 15px auto 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
+  padding: 0 15px;
 }
 
 .footer-bottom-left {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
+  flex: 1;
+  min-width: 300px;
+  margin-bottom: 15px;
 }
 
 .footer-logo {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: auto;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: rotate(-5deg) scale(1.05); /* Hiệu ứng xoay nhẹ khi hover */
 }
 
 .footer-company-info {
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .footer-company-info p {
   margin: 5px 0;
+  color: rgba(255, 255, 255, 0.95); /* Sáng hơn */
+}
+
+.footer-company-info strong {
+  color: #fff;
+  font-size: 14px;
 }
 
 .footer-bottom-right {
+  flex: 1;
+  min-width: 200px;
   text-align: right;
 }
 
 .social-icons {
   display: flex;
+  justify-content: flex-end;
   gap: 10px;
   margin-top: 10px;
+}
+
+.social-icon {
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .social-icon img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Responsive adjustments */
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.1); /* Nảy lên khi hover */
+  filter: brightness(1.1); /* Sáng hơn */
+}
+
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
-    gap: 20px;
   }
 
   .footer-column {
-    margin-right: 0;
+    margin: 0 0 15px 0;
+  }
+
+  .footer-badge {
+    justify-content: flex-start;
+    margin-top: 10px;
   }
 
   .footer-bottom {
     flex-direction: column;
-    gap: 20px;
-    text-align: center;
   }
 
   .footer-bottom-right {
-    text-align: center;
+    text-align: left;
+    margin-top: 15px;
+  }
+
+  .social-icons {
+    justify-content: flex-start;
   }
 }
