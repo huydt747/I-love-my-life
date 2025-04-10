@@ -28,7 +28,7 @@ function Header() {
           <li><a href="/">TRANG CHỦ</a></li>
           <li><a href="/gioi-thieu">GIỚI THIỆU</a></li>
           <li><a href="/san-pham">SẢN PHẨM</a></li>
-          <li><a href="/phan-phoi">PHÂN PHỐI</a></li>
+          {/* <li><a href="/phan-phoi">PHÂN PHỐI</a></li>
 
           <li
             className="nav-dropdown"
@@ -43,7 +43,7 @@ function Header() {
               <a href="/quan-he-co-dong/dai-hoi-co-dong">Đại hội cổ đông</a>
             </div>
           </li>
-
+ */}
           <li
             className="nav-dropdown"
             onMouseEnter={() => setNewsDropdownOpen(true)}
@@ -53,9 +53,9 @@ function Header() {
               TIN TỨC {newsDropdownOpen ? "▴" : "▾"}
             </a>
             <div className={`nav-dropdown-menu ${newsDropdownOpen ? "show" : ""}`}>
-              <a href="/dai-hoi-dong-co-dong">Đại hội đồng cổ đông</a>
-              <a href="/hoat-dong-cong-ty">Hoạt động công ty</a>
-              <a href="/tuyen-dung">Tuyển dụng</a>
+              <a href="/tin-tuc/danh-muc/dai-hoi-dong-co-dong-1743856974">Đại hội đồng cổ đông</a>
+              <a href="/tin-tuc/danh-muc/hoat-dong-cong-ty-1743856974">Hoạt động công ty</a>
+              <a href="/tin-tuc/danh-muc/tuyen-dung-1743856974">Tuyển dụng</a>
             </div>
           </li>
 

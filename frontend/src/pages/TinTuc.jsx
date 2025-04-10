@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import placeholder from '../assets/tintuc/default.png';
 import "../css/tintuc.css";
-import { Link } from "react-router-dom";
+import { Link , useParams } from "react-router-dom";
 import axios from "axios";
-import debounce from 'lodash/debounce';
 
 const recentPosts = [
   { id: 1, title: "LỜI TRI ÂN 45 NĂM THÀNH LẬP BAMEPHARM", date: "1/1/2025" },
@@ -19,7 +18,7 @@ const ArticleCard = ({ article }) => {
   return (
     <div className="article-card">
       <div className="article-image">
-      <Link to={`/chi-tiet-tin-tuc/${article.slug}`}><img src={imageUrl} alt={article.title} /></Link>
+      <Link to={`/tin-tuc/bai-viet/${article.slug}`}><img src={imageUrl} alt={article.title} /></Link>
         <div className="article-category">{article.category_name || article.category || "Chưa phân loại"}</div>
       </div>
       <div className="article-content">
@@ -28,10 +27,10 @@ const ArticleCard = ({ article }) => {
           <span><i className="far fa-calendar-alt"></i> {new Date(article.created_at).toLocaleDateString('vi-VN')}</span>
         </div>
         <h3 className="article-title">
-        <Link to={`/chi-tiet-tin-tuc/${article.slug}`}>{article.title}</Link>
+        <Link to={`/tin-tuc/bai-viet/${article.slug}`}>{article.title}</Link>
         </h3>
         <p className="article-excerpt">{article.excerpt.substring(0, 150)}...</p>
-        <Link to={`/chi-tiet-tin-tuc/${article.slug}`} className="read-more">
+        <Link to={`/tin-tuc/bai-viet/${article.slug}`} className="read-more">
           Đọc tiếp <i className="fas fa-arrow-right"></i>
         </Link>
       </div>
@@ -42,7 +41,7 @@ const ArticleCard = ({ article }) => {
 
 const CategoryItem = ({ category }) => (
   <li className="category-item">
-    <Link to={`/danh-muc/${category.slug}`}>
+    <Link to={`/tin-tuc/danh-muc/${category.slug}`}>
       {category.name} <span>({category.count})</span>
     </Link>
   </li>
@@ -73,6 +72,7 @@ function TinTuc() {
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryStats, setCategoryStats] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const { categorySlug } = useParams();
   const postsPerPage = 10;
 
   // Thêm hàm xử lý khi click vào category
@@ -81,6 +81,18 @@ function TinTuc() {
     setCurrentPage(1); // Reset về trang đầu tiên khi chọn danh mục mới
   };
   
+  useEffect(() => {
+    // Khi categorySlug thay đổi, tìm category tương ứng và cập nhật selectedCategory
+    if (categorySlug) {
+      const category = categoryStats.find(cat => cat.slug === categorySlug);
+      if (category) {
+        setSelectedCategory(category.id);
+      }
+    } else {
+      setSelectedCategory(null);
+    }
+  }, [categorySlug, categoryStats]);
+
   useEffect(() => {
     const fetchCategoryStats = async () => {
         try {
@@ -282,22 +294,18 @@ function TinTuc() {
             <h3>Danh mục</h3>
             <ul className="categories-list">
               {/* Thêm nút "Tất cả" */}
-              <li 
-                className={`category-item ${!selectedCategory ? 'active' : ''}`}
-                onClick={() => handleCategoryClick(null)}
-              >
-                <a>Tất cả</a>
+              <li className={`category-item ${!selectedCategory ? 'active' : ''}`}>
+                <Link to="/tin-tuc">Tất cả</Link>
               </li>
               
               {categoryStats.map((category) => (
                 <li 
                   className={`category-item ${selectedCategory === category.id ? 'active' : ''}`} 
                   key={category.id}
-                  onClick={() => handleCategoryClick(category.id)}
                 >
-                  <a>
+                  <Link to={`/tin-tuc/danh-muc/${category.slug}`}>
                     {category.name} <span>({category.count})</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

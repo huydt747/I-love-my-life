@@ -29,6 +29,14 @@ const router = createBrowserRouter([
         element: <TinTuc/>,
       },
       {
+        path:"/tin-tuc/danh-muc/:categorySlug",
+        element: <TinTuc/>,
+      },
+      {
+        path:"/tin-tuc/bai-viet/:slug",
+        element: <ChitietTinTuc/>,
+      },
+      {
         path:"/gioi-thieu",
         element: <GioiThieu/>,
       },
@@ -39,10 +47,6 @@ const router = createBrowserRouter([
       {
         path:"/lien-he",
         element: <LienHe/>,
-      },
-      {
-        path:"/chi-tiet-tin-tuc/:slug",
-        element: <ChitietTinTuc/>,
       },
       {
         path:"/chi-tiet-san-pham",
