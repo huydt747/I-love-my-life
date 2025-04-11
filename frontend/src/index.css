@@ -5,6 +5,16 @@ body {
     font-style: normal !important;
   }
 
+:root {
+  --primary-color: #2a7f62;
+  --secondary-color: #f8f9fa;
+  --accent-color: #ff6b6b;
+  --text-color: #333;
+  --light-text: #777;
+  --border-color: #e0e0e0;
+}
+
 a {
   text-decoration: none !important;
 }
+

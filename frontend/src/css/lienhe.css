@@ -1,11 +1,4 @@
-/* Variables */
 :root {
-  --primary-color: #2a7f62;
-  --primary-light: #e8f5e9;
-  --secondary-color: #f8f9fa;
-  --accent-color: #ff6b6b;
-  --text-color: #333;
-  --light-text: #777;
   --border-color: #e0e0e0;
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }

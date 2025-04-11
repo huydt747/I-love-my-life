@@ -28,7 +28,7 @@ const DistributionSystem = () => {
 
   return (
     <div className="container">
-      <h1 className="text-2xl font-bold text-center mb-6">
+      <h1 className="text-2xl font-bold text-center mb-6 section-title">
         HỆ THỐNG PHÂN PHỐI
       </h1>
       <div className="mb-8 p-4 border rounded-lg shadow-md">
@@ -43,7 +43,7 @@ const DistributionSystem = () => {
         <p className="mb-1">Email: info@hopham.vn</p>
       </div>
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">CHI NHÁNH</h2>
+        <h2 className="text-xl font-semibold mb-4 section-title">CHI NHÁNH</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {Object.keys(branches)
             .filter((b) => b !== "TRỤ SỖ CHÍNH")
