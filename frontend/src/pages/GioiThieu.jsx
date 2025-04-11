@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "../css/gioithieu.css";
 
 const timelineData = [
@@ -23,6 +24,44 @@ const timelineData = [
       "Thực hiện chủ trương của Chính phủ về việc chuyển doanh nghiệp Nhà nước thành công ty cổ phần, Công ty cổ phần hóa thành CÔNG TY CỔ PHẦN DƯỢC-VẬT TƯ Y TẾ ĐẮK LẮK tại quyết định số 3849/QĐ-UB ngày 03/12/2003 của UBND tỉnh Đắk Lắk.",
   },
 ];
+
+const boardMembers = [
+  { name: 'Nguyễn Mậu Hoàng Sơn', position: 'Chủ tịch' },
+  { name: 'Nguyễn Thị Kim Liên', position: 'Phó Chủ tịch' },
+  { name: 'Đinh Trung Kiên', position: 'Thành viên' },
+  { name: 'Phan Thành Trinh', position: 'Thành viên' },
+  { name: 'Nguyễn Bá Lộc', position: 'Thành viên' }
+];
+
+const auditCommittee = [
+  { name: 'Nguyễn Văn Thông', position: 'Trưởng ban' },
+  { name: 'Trần Văn Lợi', position: 'Thành viên' },
+  { name: 'Nguyễn Thị Hồng Anh', position: 'Thành viên' }
+];
+
+const ceo = { name: 'Phan Thành Trinh', position: 'Tổng Giám đốc' };
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5
+    }
+  }
+};
 
 const GioiThieu = () => {
   return (
@@ -79,7 +118,51 @@ const GioiThieu = () => {
         </div>
       </div>
     </div>
+
+<div className="leadership-section">
+  <h2 className="section-title">BAN LÃNH ĐẠO CÔNG TY</h2>
+  
+  <div className="leadership-board">
+    <h3 className="board-title">HỘI ĐỒNG QUẢN TRỊ NHIỆM KỲ 2017-2021</h3>
+    <div className="members-grid">
+      {boardMembers.map((member, index) => (
+        <div key={index} className="member-card">
+          <div className="member-avatar">{member.name.charAt(0)}</div>
+          <div className="member-info">
+            <h4 className="member-name">{member.name}</h4>
+            <p className="member-position">{member.position}</p>
+          </div>
+        </div>
+      ))}
     </div>
+  </div>
+
+  <div className="leadership-board audit-board">
+    <h3 className="board-title">BAN KIỂM SOÁT NHIỆM KỲ 2017-2021</h3>
+    <div className="members-grid">
+      {auditCommittee.map((member, index) => (
+        <div key={index} className="member-card">
+          <div className="member-avatar">{member.name.charAt(0)}</div>
+          <div className="member-info">
+            <h4 className="member-name">{member.name}</h4>
+            <p className="member-position">{member.position}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div className="ceo-card">
+    <div className="ceo-avatar">
+      <span>{ceo.name.split(' ').map(n => n[0]).join('')}</span>
+    </div>
+    <div className="ceo-info">
+      <h3 className="ceo-name">{ceo.name}</h3>
+      <p className="ceo-position">{ceo.position} Điều hành</p>
+    </div>
+  </div>
+</div>
+</div>
   );
 };
 
